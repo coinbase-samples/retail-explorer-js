@@ -16,7 +16,6 @@
     "@cloudscape-design/components": "^3.0.140",
     "@cloudscape-design/global-styles": "^1.0.1",
     "ace-builds": "^1.19.0",
-    "axios": "^0.27.2",
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",
     "cryptocons": "^1.3.3",
@@ -32,7 +31,6 @@
     "react-qr-code": "^2.0.8",
     "react-redux": "^8.0.2",
     "react-use-websocket": "^4.2.0",
-    "socket.io": "^4.5.2",
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {

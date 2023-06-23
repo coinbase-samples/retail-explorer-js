@@ -20,8 +20,7 @@ import styles from "../styles/Products.module.css";
 import QRCode from "react-qr-code";
 
 const Asset = ({ asset }) => {
-  const { chargeAddresses, exchangeRate, totalPrice } =
-    useContext(CartContext);
+  const { chargeAddresses, exchangeRate, totalPrice } = useContext(CartContext);
   const selectedAsset = new String(asset).toLowerCase();
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
