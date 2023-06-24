@@ -47,7 +47,6 @@ export function SendForm(props) {
         });
 
         const response = await createSend2FA.json();
-        console.log("2FA sent", response);
         setTwoFAReceived(true);
       }
     } catch (error) {
