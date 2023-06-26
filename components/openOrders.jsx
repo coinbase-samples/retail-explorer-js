@@ -1,4 +1,20 @@
-import React, { useContext, useEffect, useState } from "react";
+/**
+ * Copyright 2023 Coinbase Global, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import React, { useContext, useEffect, useState } from 'react';
 import {
   Table,
   Button,
@@ -7,10 +23,10 @@ import {
   SpaceBetween,
   ColumnLayout,
   HelpPanel,
-} from "@cloudscape-design/components";
-import { OrdersContext } from "../context/ordersContext";
+} from '@cloudscape-design/components';
+import { OrdersContext } from '../context/ordersContext';
 
-import { AssetContext } from "../context/assetContext";
+import { AssetContext } from '../context/assetContext';
 function OpenOrders(props) {
   const {
     getOpenOrders,
@@ -50,7 +66,7 @@ function OpenOrders(props) {
   };
 
   const cancelOrder = () => {
-    alert("Order Cancelled");
+    alert('Order Cancelled');
   };
 
   return (
@@ -63,40 +79,40 @@ function OpenOrders(props) {
         variant="container"
         columnDefinitions={[
           {
-            id: "order_id",
-            header: "Order Id",
+            id: 'order_id',
+            header: 'Order Id',
             cell: (e) => e.order_id,
             width: 150,
             minWidth: 150,
-            sortingField: "order_id",
+            sortingField: 'order_id',
           },
           {
-            id: "asset",
-            header: "Asset",
+            id: 'asset',
+            header: 'Asset',
             cell: (e) => e.product_id,
             width: 130,
             minWidth: 130,
-            sortingField: "asset",
+            sortingField: 'asset',
           },
           {
-            id: "filled_size",
-            header: "Filled Size",
+            id: 'filled_size',
+            header: 'Filled Size',
             cell: (e) => e.filled_size,
             width: 135,
             minWidth: 135,
-            sortingField: "filled_size",
+            sortingField: 'filled_size',
           },
           {
-            id: "created_at",
-            header: "Order Date",
+            id: 'created_at',
+            header: 'Order Date',
             cell: (e) => e.created_time,
             width: 150,
             minWidth: 150,
-            sortingField: "created_at",
+            sortingField: 'created_at',
           },
           {
-            id: "details",
-            header: "Details",
+            id: 'details',
+            header: 'Details',
             cell: (e) => (
               <Button onClick={() => openModal(e.order_id)}>Details</Button>
             ),

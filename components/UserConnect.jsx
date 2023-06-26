@@ -1,12 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { SelectScopes } from "./selectScopes";
+/**
+ * Copyright 2023 Coinbase Global, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import React, { useState, useEffect } from 'react';
+import { SelectScopes } from './selectScopes';
 
 import {
   Button,
   Modal,
   Box,
   SpaceBetween,
-} from "@cloudscape-design/components";
+} from '@cloudscape-design/components';
 
 export function UserConnect(props) {
   const [connectModal, setConnectModal] = useState(false);
@@ -18,14 +34,14 @@ export function UserConnect(props) {
 
   useEffect(() => {
     if (window.opener) {
-      console.log("window opener ", window.opener);
+      console.log('window opener ', window.opener);
     }
   }, []);
 
   function generateRandomString(length) {
-    let result = "";
+    let result = '';
     const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     const charactersLength = characters.length;
 
     for (let i = 0; i < length; i++) {
@@ -36,7 +52,7 @@ export function UserConnect(props) {
   }
 
   const initiateOauth = () => {
-    const scope = selectedScopeOptions.map((scope) => scope.value).join(" ");
+    const scope = selectedScopeOptions.map((scope) => scope.value).join(' ');
     const state = generateRandomString(10);
     const authorizeUrl = `${OAUTH_BASE_URL}/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}&state=${state}&account=all&meta[account]=all&meta[send_limit_amount]=1.00&meta[send_limit_currency]=USD&meta[send_limit_period]=month`;
 
@@ -74,6 +90,6 @@ export function UserConnect(props) {
       />
     </Modal>
   ) : (
-    ""
+    ''
   );
 }
