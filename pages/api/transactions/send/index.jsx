@@ -1,14 +1,14 @@
-import { makeCall } from "../../retailClient";
-import { uuid } from "uuidv4";
-import { response } from "express";
+import { makeCall } from '../../retailClient';
+import { uuid } from 'uuidv4';
+import { response } from 'express';
 export default async function orders(req, res) {
   const { query } = req;
   const { token, to, amount, asset, twoFAcode } = query;
   let path = `/v2/accounts/${asset}/transactions`;
   let payload;
-  if (req.method === "POST") {
+  if (req.method === 'POST') {
     const body = {
-      type: "send",
+      type: 'send',
       amount,
       to,
       currency: asset,
@@ -20,9 +20,9 @@ export default async function orders(req, res) {
       const initiateSend = await makeCall(
         token,
         path,
-        "POST",
+        'POST',
         payload,
-        twoFAcode
+        twoFAcode,
       );
 
       const response = await initiateSend.json();
@@ -35,11 +35,11 @@ export default async function orders(req, res) {
         return res.status(500).json({ error: response.errors[0] });
       }
     } catch (error) {
-      console.log("this was the  send error", error);
+      console.log('this was the  send error', error);
       res.status(500).json({ error: error.message });
     }
   } else {
     // Handle any other HTTP method
-    res.status(400).json({ error: "Method not allowed" });
+    res.status(400).json({ error: 'Method not allowed' });
   }
 }

@@ -1,11 +1,11 @@
-import * as React from "react";
-import { useContext, useEffect } from "react";
-import { AssetContext } from "../context/assetContext";
-import { OrdersContext } from "../context/ordersContext";
-import { Icons } from "../utils/Icons";
-import { TradeForm } from "./TradeModal";
-import { ReceiveForm } from "./ReceiveModal";
-import { SendForm } from "./SendModal";
+import * as React from 'react';
+import { useContext, useEffect } from 'react';
+import { AssetContext } from '../context/assetContext';
+import { OrdersContext } from '../context/ordersContext';
+import { Icons } from '../utils/Icons';
+import { TradeForm } from './TradeModal';
+import { ReceiveForm } from './ReceiveModal';
+import { SendForm } from './SendModal';
 
 import {
   HelpPanel,
@@ -16,7 +16,7 @@ import {
   Header,
   Container,
   SpaceBetween,
-} from "@cloudscape-design/components";
+} from '@cloudscape-design/components';
 
 function AssetInfo(props) {
   const {
@@ -46,12 +46,12 @@ function AssetInfo(props) {
     const path = `/api/products/${asset}-USD?token=${token}`;
     try {
       const productResponse = await fetch(path, {
-        method: "GET",
+        method: 'GET',
       });
       const productData = await productResponse.json();
       setProduct(productData);
     } catch (error) {
-      console.error("Error fetching product:", error);
+      console.error('Error fetching product:', error);
     }
   };
 
@@ -91,7 +91,7 @@ function AssetInfo(props) {
               </SpaceBetween>
             }
           >
-            <div style={{ display: "flex", alignItems: "center" }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
               <Icons asset={userAsset?.currency} /> {userAsset?.currency} Wallet
               Info
             </div>

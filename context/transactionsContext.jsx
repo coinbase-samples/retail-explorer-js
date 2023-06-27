@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext } from 'react';
 
 const defaultState = {};
 
@@ -19,8 +19,8 @@ const TransactionsProvider = ({ children }) => {
     const transactionsResponse = await fetch(
       `/api/transactions?token=${token}&product_id=${asset}`,
       {
-        method: "GET",
-      }
+        method: 'GET',
+      },
     );
     const data = await transactionsResponse.json();
     setTransactions(data);

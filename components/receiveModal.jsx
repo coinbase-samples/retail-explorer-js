@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from 'react';
 
 import {
   Button,
@@ -8,38 +8,38 @@ import {
   Box,
   SpaceBetween,
   Input,
-} from "@cloudscape-design/components";
+} from '@cloudscape-design/components';
 
-import { AssetContext } from "../context/assetContext";
+import { AssetContext } from '../context/assetContext';
 
 export function ReceiveForm(props) {
   const { token } = props;
   const { asset } = useContext(AssetContext);
   const [address, setAddress] = useState({});
-  const [addressName, setAddressName] = useState("");
+  const [addressName, setAddressName] = useState('');
 
   const closeModal = () => {
     props.close();
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async event => {
     event.preventDefault();
     try {
       const path = `/api/addresses/${asset}?token=${token}&name=${addressName}`;
 
       const createAddressResponse = await fetch(path, {
-        method: "POST",
+        method: 'POST',
       });
       const response = await createAddressResponse.json();
       setAddress(response);
     } catch (error) {
-      console.log("error", error);
+      console.log('error', error);
 
       closeModal();
     }
   };
 
-  const handleAddressName = (name) => {
+  const handleAddressName = name => {
     setAddressName(name);
   };
 

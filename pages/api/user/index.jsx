@@ -1,10 +1,10 @@
-import { makeCall } from "../retailClient";
+import { makeCall } from '../retailClient';
 export default async function handler(req, res) {
   const { query } = req;
 
   const access_token = query.token;
   let path = `/v2/user`;
-  if (req.method === "GET") {
+  if (req.method === 'GET') {
     // Handle a GET request
     try {
       const getUser = await makeCall(access_token, path);
@@ -15,6 +15,6 @@ export default async function handler(req, res) {
     }
   } else {
     // Handle any other HTTP method
-    res.status(400).json({ error: "Method not allowed" });
+    res.status(400).json({ error: 'Method not allowed' });
   }
 }

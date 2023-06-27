@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-import Head from "next/head";
-import styles from "../styles/Layouts.module.css";
-import Header from "./Header";
-import Footer from "./Footer";
+import Head from 'next/head';
+import styles from '../styles/Layouts.module.css';
+import Header from './Header';
+import Footer from './Footer';
 
 export default function Layout({ title, keywords, description, children }) {
   return (
@@ -35,7 +35,7 @@ export default function Layout({ title, keywords, description, children }) {
 }
 
 Layout.defaultProps = {
-  title: "Coin Auth | Advanded Trading",
-  description: "Trade, Transfer and receive crypto assets",
-  keywords: "trade, send, receive",
+  title: 'Coin Auth | Advanded Trading',
+  description: 'Trade, Transfer and receive crypto assets',
+  keywords: 'trade, send, receive',
 };

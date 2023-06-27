@@ -16,11 +16,11 @@
 function getBackendHeaders() {
   try {
     const headers = {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      "X-CC-Api-Key": process.env.NEXT_PUBLIC_API_KEY, //process.env.commerceKey,
-      "X-CC-Version": process.env.NEXT_PUBLIC_API_VERSION, //process.env.NEXT_PUBLIC_API_VERSION,
-      Mode: "cors",
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'X-CC-Api-Key': process.env.NEXT_PUBLIC_API_KEY, //process.env.commerceKey,
+      'X-CC-Version': process.env.NEXT_PUBLIC_API_VERSION, //process.env.NEXT_PUBLIC_API_VERSION,
+      Mode: 'cors',
     };
     return headers;
   } catch (error) {

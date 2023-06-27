@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext } from 'react';
 
 const defaultState = {};
 
@@ -28,8 +28,8 @@ const OrdersProvider = ({ children }) => {
     const fetchOrderById = await fetch(
       `/api/orders/${order_id}?token=${token}&account_id=${account_id}`,
       {
-        method: "GET",
-      }
+        method: 'GET',
+      },
     );
     try {
       const data = await fetchOrderById.json();
@@ -39,7 +39,7 @@ const OrdersProvider = ({ children }) => {
       setOrderFetching(false);
     } catch (error) {
       setOrder({});
-      console.log("error", error);
+      console.log('error', error);
       setOrderLoading(false);
       setOrderFetching(false);
     }
@@ -57,8 +57,8 @@ const OrdersProvider = ({ children }) => {
       const orderResponse = await fetch(
         `/api/orders?token=${token}&asset=${asset}`,
         {
-          method: "GET",
-        }
+          method: 'GET',
+        },
       );
       const data = await orderResponse.json();
       if (data.errors) {
@@ -70,7 +70,7 @@ const OrdersProvider = ({ children }) => {
         setFetching(false);
       }
     } catch (error) {
-      console.log("error", error);
+      console.log('error', error);
       setOrdersLoading(false);
       setFetching(false);
     }
@@ -88,8 +88,8 @@ const OrdersProvider = ({ children }) => {
       const orderResponse = await fetch(
         `/api/orders/open?token=${token}&product_id=${asset}`,
         {
-          method: "GET",
-        }
+          method: 'GET',
+        },
       );
       const data = await orderResponse.json();
 
@@ -97,7 +97,7 @@ const OrdersProvider = ({ children }) => {
       setOrdersLoading(false);
       setFetchingOpenOrders(false);
     } catch (error) {
-      console.log("error", error);
+      console.log('error', error);
       setOpenOrdersLoading(false);
       setFetchingOpenOrders(false);
     }
@@ -108,12 +108,12 @@ const OrdersProvider = ({ children }) => {
     product_id,
     quote_size,
     side,
-    type = "MARKET",
-    limitPrice = ""
+    type = 'MARKET',
+    limitPrice = '',
   ) => {
     let path;
     try {
-      if (side === "SELL") {
+      if (side === 'SELL') {
         path = `/api/orders?token=${token}&product_id=${product_id}-USD&base_size=${quote_size}&side=${side}&type=${type}&limitPrice=${limitPrice}`;
       } else {
         path = `/api/orders?token=${token}&product_id=${product_id}-USD&quote_size=${quote_size}&side=${side}&type=${type}&limitPrice=${limitPrice}`;
@@ -121,16 +121,16 @@ const OrdersProvider = ({ children }) => {
 
       setPlacingOrder(true);
       const createOrderResponse = await fetch(path, {
-        method: "POST",
+        method: 'POST',
       });
       const data = await createOrderResponse.json();
-      console.log("context ", data);
+      console.log('context ', data);
       setUserOrder(data);
-      setUserOrders((prevOrders) => [...prevOrders, data]);
+      setUserOrders(prevOrders => [...prevOrders, data]);
       setPlacingOrderLoading(false);
       setPlacingOrder(false);
     } catch (error) {
-      console.log("error", error);
+      console.log('error', error);
       setPlacingOrderLoading(false);
       setPlacingOrder(false);
     }

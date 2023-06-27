@@ -13,17 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Layout from "../components/Layouts";
-import styles from "../styles/404.module.css";
-import Link from "next/link";
+import Layout from '../components/Layouts';
+import styles from '../styles/404.module.css';
+import Link from 'next/link';
 
 export default function NotFoundPage() {
   return (
-    <Layout title={"Page Not Found"}>
+    <Layout title={'Page Not Found'}>
       <div className={styles.error}>
         <h1>404</h1>
         <h4>Sorry, there is nothing here.</h4>
-        <Link href={"/"}>Go back home.</Link>
+        <Link href={'/'}>Go back home.</Link>
       </div>
     </Layout>
   );

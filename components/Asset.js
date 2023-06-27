@@ -13,18 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { useContext } from "react";
-import { CartContext } from "../context/cartContext";
-import { Button } from "@cloudscape-design/components";
-import styles from "../styles/Products.module.css";
-import QRCode from "react-qr-code";
+import { useContext } from 'react';
+import { CartContext } from '../context/cartContext';
+import { Button } from '@cloudscape-design/components';
+import styles from '../styles/Products.module.css';
+import QRCode from 'react-qr-code';
 
 const Asset = ({ asset }) => {
   const { chargeAddresses, exchangeRate, totalPrice } = useContext(CartContext);
   const selectedAsset = new String(asset).toLowerCase();
-  const formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
   });
   const formattedPrice = Number(totalPrice);
 
@@ -33,7 +33,7 @@ const Asset = ({ asset }) => {
       <div>
         <QRCode
           size={256}
-          style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+          style={{ height: 'auto', maxWidth: '100%', width: '100%' }}
           value={chargeAddresses[selectedAsset]}
           viewBox={`0 0 256 256`}
         />
@@ -50,12 +50,12 @@ const Asset = ({ asset }) => {
         </p>
 
         <p>
-          {`${exchangeRate[selectedAsset]["amount"]}  ${asset}  `}
+          {`${exchangeRate[selectedAsset]['amount']}  ${asset}  `}
           <Button
             iconName="copy"
             onClick={() => {
               navigator.clipboard.writeText(
-                exchangeRate[selectedAsset]["amount"]
+                exchangeRate[selectedAsset]['amount'],
               );
             }}
           ></Button>

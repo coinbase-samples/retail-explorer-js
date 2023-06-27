@@ -1,27 +1,27 @@
-import React, { useState, useEffect, useContext } from "react";
-import { assetMenuList } from "../utils/assetsList";
+import React, { useState, useEffect, useContext } from 'react';
+import { assetMenuList } from '../utils/assetsList';
 import {
   Button,
   Modal,
   Box,
   SpaceBetween,
   Select,
-} from "@cloudscape-design/components";
+} from '@cloudscape-design/components';
 
-import { AssetContext } from "../context/assetContext";
+import { AssetContext } from '../context/assetContext';
 
 export function AssetSwitcher(props) {
   const { setAsset } = useContext(AssetContext);
   const [selectedAssetOption, setSelectedAssetOption] = useState({
-    label: "ETH-USD",
-    value: "ETH",
+    label: 'ETH-USD',
+    value: 'ETH',
   });
 
   useEffect(() => {
     if (props.open) {
       setSelectedAssetOption({
-        label: "ETH-USD",
-        value: "ETH",
+        label: 'ETH-USD',
+        value: 'ETH',
       });
     }
   }, [props.open]);

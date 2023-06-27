@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Table, Box } from "@cloudscape-design/components";
-import { TransactionsContext } from "../context/transactionsContext";
+import React, { useContext, useEffect, useState } from 'react';
+import { Table, Box } from '@cloudscape-design/components';
+import { TransactionsContext } from '../context/transactionsContext';
 
 function Transactions(props) {
   const {
@@ -13,7 +13,7 @@ function Transactions(props) {
 
   useEffect(() => {
     if (transactions !== []) {
-      console.log("calling transactions context", asset);
+      console.log('calling transactions context', asset);
       getTransactions(token, asset);
     }
   }, [asset]); // useEffect now depends on userOpenOrders
@@ -27,41 +27,41 @@ function Transactions(props) {
         variant="container"
         columnDefinitions={[
           {
-            id: "id",
-            header: "Transaction Id",
-            cell: (e) => e.id,
+            id: 'id',
+            header: 'Transaction Id',
+            cell: e => e.id,
             width: 250,
             minWidth: 150,
-            sortingField: "id",
+            sortingField: 'id',
           },
           {
-            id: "type",
-            header: "Type",
-            cell: (e) => e.type,
+            id: 'type',
+            header: 'Type',
+            cell: e => e.type,
             width: 130,
             minWidth: 130,
-            sortingField: "type",
+            sortingField: 'type',
           },
           {
-            id: "status",
-            header: "Status",
-            cell: (e) => e.status,
+            id: 'status',
+            header: 'Status',
+            cell: e => e.status,
             width: 135,
             minWidth: 135,
-            sortingField: "status",
+            sortingField: 'status',
           },
           {
-            id: "created_at",
-            header: "Order Date",
-            cell: (e) => e.created_at,
+            id: 'created_at',
+            header: 'Order Date',
+            cell: e => e.created_at,
             width: 150,
             minWidth: 150,
-            sortingField: "created_at",
+            sortingField: 'created_at',
           },
           {
-            id: "currency",
-            header: "Currency",
-            cell: (e) => e.native_amount.currency,
+            id: 'currency',
+            header: 'Currency',
+            cell: e => e.native_amount.currency,
             width: 150,
             minWidth: 150,
           },

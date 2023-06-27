@@ -4,19 +4,19 @@ import {
   Header,
   Button,
   Tabs,
-} from "@cloudscape-design/components";
-import { useContext, useEffect, useState } from "react"; // Import useState
-import { UserContext } from "../context/UserContext";
-import { useRouter } from "next/router";
-import Layout from "../components/Layouts";
-import { gridDefinition } from "../utils/grids";
-import Profile from "../components/profile";
-import Orders from "../components/orders";
-import OpenOrders from "../components/openOrders";
-import AssetInfo from "../components/assetInfo";
-import Transactions from "../components/transactions";
-import { AssetSwitcher } from "../components/assetSwitcher";
-import { AssetContext } from "../context/assetContext";
+} from '@cloudscape-design/components';
+import { useContext, useEffect, useState } from 'react'; // Import useState
+import { UserContext } from '../context/UserContext';
+import { useRouter } from 'next/router';
+import Layout from '../components/Layouts';
+import { gridDefinition } from '../utils/grids';
+import Profile from '../components/profile';
+import Orders from '../components/orders';
+import OpenOrders from '../components/openOrders';
+import AssetInfo from '../components/assetInfo';
+import Transactions from '../components/transactions';
+import { AssetSwitcher } from '../components/assetSwitcher';
+import { AssetContext } from '../context/assetContext';
 
 export function Landing() {
   const router = useRouter();
@@ -27,7 +27,7 @@ export function Landing() {
   const token = query.token;
 
   useEffect(() => {
-    if (asset === "") {
+    if (asset === '') {
       setAssetModal(true);
     }
   }, [asset]);
@@ -38,7 +38,7 @@ export function Landing() {
 
   let assetSwitcherComponent = null;
 
-  if (asset === "" || assetModal) {
+  if (asset === '' || assetModal) {
     assetSwitcherComponent = (
       <AssetSwitcher token={token} open={assetModal} close={closeAssetModal} />
     );
@@ -66,20 +66,20 @@ export function Landing() {
             <Tabs
               tabs={[
                 {
-                  label: "Filled Orders",
-                  id: "filled",
-                  content: asset !== "" ? <Orders token={token} /> : null,
+                  label: 'Filled Orders',
+                  id: 'filled',
+                  content: asset !== '' ? <Orders token={token} /> : null,
                 },
                 {
-                  label: "Open Orders",
-                  id: "open",
-                  content: asset !== "" ? <OpenOrders token={token} /> : null,
+                  label: 'Open Orders',
+                  id: 'open',
+                  content: asset !== '' ? <OpenOrders token={token} /> : null,
                 },
                 {
-                  label: "Transactions",
-                  id: "transactions",
+                  label: 'Transactions',
+                  id: 'transactions',
                   content:
-                    asset !== "" ? (
+                    asset !== '' ? (
                       <Transactions token={token} asset={asset} />
                     ) : null,
                 },

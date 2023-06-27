@@ -1,5 +1,5 @@
-import React, { useState, createContext, useEffect } from "react";
-import { useRouter } from "next/router";
+import React, { useState, createContext, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const defaultState = {};
 
@@ -12,19 +12,19 @@ const UserProvider = ({ children }) => {
 
   const cachedAuthToken = authToken?.access_token;
 
-  const getAuthToken = async (code) => {
+  const getAuthToken = async code => {
     try {
       if (cachedAuthToken) {
         router.push(`/landing?token=${cachedAuthToken}`);
       } else {
         const tokenResponse = await fetch(`/api/oauth?code=${code}`, {
-          method: "POST",
+          method: 'POST',
         });
         const data = await tokenResponse.json();
         setAuthToken(data);
       }
     } catch (error) {
-      console.log("this was the token error", error);
+      console.log('this was the token error', error);
     }
   };
 

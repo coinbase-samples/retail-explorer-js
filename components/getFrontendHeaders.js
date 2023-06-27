@@ -16,10 +16,10 @@
 export default function getFrontendHeaders(http_method, url) {
   try {
     const headers = {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      "X-CC-Api-Key": process.env.API_KEY,
-      "X-CC-Version": process.env.API_VERSION, //process.env.commerceVersion,
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'X-CC-Api-Key': process.env.API_KEY,
+      'X-CC-Version': process.env.API_VERSION, //process.env.commerceVersion,
     };
     return headers;
   } catch (error) {

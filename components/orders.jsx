@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from 'react';
 import {
   Table,
   Button,
@@ -7,10 +7,10 @@ import {
   SpaceBetween,
   ColumnLayout,
   HelpPanel,
-} from "@cloudscape-design/components";
-import { OrdersContext } from "../context/ordersContext";
+} from '@cloudscape-design/components';
+import { OrdersContext } from '../context/ordersContext';
 
-import { AssetContext } from "../context/assetContext";
+import { AssetContext } from '../context/assetContext';
 function Orders(props) {
   const {
     getOrders,
@@ -34,12 +34,12 @@ function Orders(props) {
     }
   }, [asset]); // useEffect now depends on userOrders
 
-  const handleSort = (sortingState) => {
+  const handleSort = sortingState => {
     // using sortingState instead of event
     userOrders(sortingState); // updating userOrders with sorting state
   };
 
-  const openModal = async (id) => {
+  const openModal = async id => {
     setDetailsModal(true);
     setOrderLoading(true);
     await getOrderByID(token, walletId, id);
@@ -50,7 +50,7 @@ function Orders(props) {
   };
 
   const cancelOrder = () => {
-    alert("Order Cancelled");
+    alert('Order Cancelled');
   };
 
   return (
@@ -63,41 +63,41 @@ function Orders(props) {
         variant="container"
         columnDefinitions={[
           {
-            id: "order_id",
-            header: "Order Id",
-            cell: (e) => e.order_id,
+            id: 'order_id',
+            header: 'Order Id',
+            cell: e => e.order_id,
             width: 150,
             minWidth: 150,
-            sortingField: "order_id",
+            sortingField: 'order_id',
           },
           {
-            id: "asset",
-            header: "Asset",
-            cell: (e) => e.product_id,
+            id: 'asset',
+            header: 'Asset',
+            cell: e => e.product_id,
             width: 130,
             minWidth: 130,
-            sortingField: "asset",
+            sortingField: 'asset',
           },
           {
-            id: "size",
-            header: "Size",
-            cell: (e) => e.size,
+            id: 'size',
+            header: 'Size',
+            cell: e => e.size,
             width: 135,
             minWidth: 135,
-            sortingField: "size",
+            sortingField: 'size',
           },
           {
-            id: "created_at",
-            header: "Order Date",
-            cell: (e) => e.trade_time,
+            id: 'created_at',
+            header: 'Order Date',
+            cell: e => e.trade_time,
             width: 150,
             minWidth: 150,
-            sortingField: "created_at",
+            sortingField: 'created_at',
           },
           {
-            id: "details",
-            header: "Details",
-            cell: (e) => (
+            id: 'details',
+            header: 'Details',
+            cell: e => (
               <Button onClick={() => openModal(e.order_id)}>Details</Button>
             ),
             width: 150,

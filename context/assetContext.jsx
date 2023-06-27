@@ -1,5 +1,5 @@
-import React, { useState, useEffect, createContext } from "react";
-import { useRouter } from "next/router";
+import React, { useState, useEffect, createContext } from 'react';
+import { useRouter } from 'next/router';
 const defaultState = {};
 
 export const AssetContext = createContext(defaultState);
@@ -11,7 +11,7 @@ const AssetProvider = ({ children }) => {
   const [fetching, setFetching] = useState(false);
 
   const [userAsset, setUserAsset] = useState([]);
-  const [asset, setAsset] = useState("");
+  const [asset, setAsset] = useState('');
 
   const getAsset = async (token, asset) => {
     if (fetching && assetLoading) {
@@ -23,14 +23,14 @@ const AssetProvider = ({ children }) => {
       const assetResponse = await fetch(
         `/api/accounts/${asset}?token=${token}`,
         {
-          method: "GET",
-        }
+          method: 'GET',
+        },
       );
 
       const data = await assetResponse.json();
       if (data.errors) {
-        alert("You are not authorized to view this page, please log in");
-        await router.push("/");
+        alert('You are not authorized to view this page, please log in');
+        await router.push('/');
       } else {
         setUserAsset(data);
         setAssetLoading(false);
@@ -44,7 +44,7 @@ const AssetProvider = ({ children }) => {
     }
   };
 
-  const selectedAsset = async (asset) => {
+  const selectedAsset = async asset => {
     setAsset(asset);
   };
 

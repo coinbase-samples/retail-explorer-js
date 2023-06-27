@@ -1,8 +1,8 @@
-import * as React from "react";
-import { useContext, useEffect } from "react";
-import { ProfileContext } from "../context/profileContext";
-import { AssetContext } from "../context/assetContext";
-import { HelpPanel, ColumnLayout } from "@cloudscape-design/components";
+import * as React from 'react';
+import { useContext, useEffect } from 'react';
+import { ProfileContext } from '../context/profileContext';
+import { AssetContext } from '../context/assetContext';
+import { HelpPanel, ColumnLayout } from '@cloudscape-design/components';
 
 function Profile(props) {
   const {

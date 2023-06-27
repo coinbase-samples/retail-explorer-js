@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-import "../styles/globals.css";
-import "@cloudscape-design/global-styles/index.css";
-import UserProvider from "../context/UserContext";
-import ProfileProvider from "../context/profileContext";
-import OrdersProvider from "../context/ordersContext";
-import AssetProvider from "../context/assetContext";
-import TransactionsProvider from "../context/transactionsContext";
+import '../styles/globals.css';
+import '@cloudscape-design/global-styles/index.css';
+import UserProvider from '../context/UserContext';
+import ProfileProvider from '../context/profileContext';
+import OrdersProvider from '../context/ordersContext';
+import AssetProvider from '../context/assetContext';
+import TransactionsProvider from '../context/transactionsContext';
 
 function MyApp({ Component, pageProps }) {
   return (
