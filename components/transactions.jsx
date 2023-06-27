@@ -45,7 +45,7 @@ function Transactions(props) {
           {
             id: 'id',
             header: 'Transaction Id',
-            cell: (e) => e.id,
+            cell: e => e.id,
             width: 250,
             minWidth: 150,
             sortingField: 'id',
@@ -53,7 +53,7 @@ function Transactions(props) {
           {
             id: 'type',
             header: 'Type',
-            cell: (e) => e.type,
+            cell: e => e.type,
             width: 130,
             minWidth: 130,
             sortingField: 'type',
@@ -61,7 +61,7 @@ function Transactions(props) {
           {
             id: 'status',
             header: 'Status',
-            cell: (e) => e.status,
+            cell: e => e.status,
             width: 135,
             minWidth: 135,
             sortingField: 'status',
@@ -69,7 +69,7 @@ function Transactions(props) {
           {
             id: 'created_at',
             header: 'Order Date',
-            cell: (e) => e.created_at,
+            cell: e => e.created_at,
             width: 150,
             minWidth: 150,
             sortingField: 'created_at',
@@ -77,7 +77,7 @@ function Transactions(props) {
           {
             id: 'currency',
             header: 'Currency',
-            cell: (e) => e.native_amount.currency,
+            cell: e => e.native_amount.currency,
             width: 150,
             minWidth: 150,
           },

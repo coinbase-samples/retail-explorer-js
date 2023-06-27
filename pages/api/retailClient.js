@@ -1,3 +1,4 @@
+import { requestHeaders } from '../../utils/headers';
 export const makeCall = async (
   token,
   path = '/',
@@ -6,25 +7,16 @@ export const makeCall = async (
   twoFAcode = '',
 ) => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-
   const targetUrl = `${baseUrl}${path}`;
   let headers;
 
   if (twoFAcode !== '') {
-    headers = {
-      Accept: 'application/json',
-      'CB-VERSION': '2015-04-08',
-      Authorization: 'Bearer ' + token,
-      'CB-2FA-TOKEN': twoFAcode,
-    };
+    headers = requestHeaders(true, token, twoFAcode);
   } else {
-    headers = {
-      Accept: 'application/json',
-      'CB-VERSION': '2015-04-08',
-      Authorization: 'Bearer ' + token,
-    };
+    headers = requestHeaders(false, token);
   }
-
+ 
+  console.log(headers)
   try {
     const options = {
       method,

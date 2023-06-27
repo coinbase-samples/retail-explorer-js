@@ -38,7 +38,7 @@ export function ReceiveForm(props) {
     props.close();
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async event => {
     event.preventDefault();
     try {
       const path = `/api/addresses/${asset}?token=${token}&name=${addressName}`;
@@ -55,7 +55,7 @@ export function ReceiveForm(props) {
     }
   };
 
-  const handleAddressName = (name) => {
+  const handleAddressName = name => {
     setAddressName(name);
   };
 

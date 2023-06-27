@@ -36,7 +36,7 @@ const TransactionsProvider = ({ children }) => {
       `/api/transactions?token=${token}&product_id=${asset}`,
       {
         method: 'GET',
-      }
+      },
     );
     const data = await transactionsResponse.json();
     setTransactions(data);

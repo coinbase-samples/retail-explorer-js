@@ -12,7 +12,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */ 
+ */
 
 import React, { useState, useEffect, createContext } from 'react';
 import { useRouter } from 'next/router';
@@ -40,7 +40,7 @@ const AssetProvider = ({ children }) => {
         `/api/accounts/${asset}?token=${token}`,
         {
           method: 'GET',
-        }
+        },
       );
 
       const data = await assetResponse.json();
@@ -60,7 +60,7 @@ const AssetProvider = ({ children }) => {
     }
   };
 
-  const selectedAsset = async (asset) => {
+  const selectedAsset = async asset => {
     setAsset(asset);
   };
 

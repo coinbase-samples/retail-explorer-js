@@ -28,7 +28,7 @@ const UserProvider = ({ children }) => {
 
   const cachedAuthToken = authToken?.access_token;
 
-  const getAuthToken = async (code) => {
+  const getAuthToken = async code => {
     try {
       if (cachedAuthToken) {
         router.push(`/landing?token=${cachedAuthToken}`);

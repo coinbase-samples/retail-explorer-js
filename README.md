@@ -2,7 +2,11 @@ Built with [Next.js](https://nextjs.org/), Coin Auth is a reference implementati
 
 ## Getting Started
 
-Node install npm and use node version v18.2.0
+Switch to Node version 18 or higher
+
+```
+nvm use 18
+```
 
 Install dependencies
 

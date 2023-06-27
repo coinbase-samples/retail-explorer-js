@@ -46,7 +46,7 @@ export default function HomePage() {
         .then(() => {
           setLoading(false);
         })
-        .catch((error) => {
+        .catch(error => {
           // Handle any error that occurs during token retrieval
           setLoading(false);
           console.error(error);

@@ -27,8 +27,6 @@ import {
   HelpPanel,
   ColumnLayout,
   Button,
-  ButtonGroup,
-  Box,
   Header,
   Container,
   SpaceBetween,
@@ -42,18 +40,17 @@ function AssetInfo(props) {
     asset,
   } = useContext(AssetContext);
 
+  const [tradeModal, setTradeModal] = React.useState(false);
+  const [receiveModal, setReceiveModal] = React.useState(false);
+  const [sendModal, setSendModal] = React.useState(false);
+
+  const [product, setProduct] = React.useState(0);
   const token = props.token;
   const closeTradeModal = () => {
     setTradeModal(false);
     setReceiveModal(false);
     setSendModal(false);
   };
-
-  const [tradeModal, setTradeModal] = React.useState(false);
-  const [receiveModal, setReceiveModal] = React.useState(false);
-  const [sendModal, setSendModal] = React.useState(false);
-
-  const [product, setProduct] = React.useState(0);
 
   const [initialFetchCompleted, setInitialFetchCompleted] =
     React.useState(false);

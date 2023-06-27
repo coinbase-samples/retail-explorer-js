@@ -73,7 +73,7 @@ export function SelectScopes({
   ];
 
   const handleSelectAll = () => {
-    const allValues = scopes.map((scope) => scope);
+    const allValues = scopes.map(scope => scope);
     setSelectedScopeOptions(allValues);
   };
 

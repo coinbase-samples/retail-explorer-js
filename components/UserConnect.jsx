@@ -52,7 +52,7 @@ export function UserConnect(props) {
   }
 
   const initiateOauth = () => {
-    const scope = selectedScopeOptions.map((scope) => scope.value).join(' ');
+    const scope = selectedScopeOptions.map(scope => scope.value).join(' ');
     const state = generateRandomString(10);
     const authorizeUrl = `${OAUTH_BASE_URL}/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}&state=${state}&account=all&meta[account]=all&meta[send_limit_amount]=1.00&meta[send_limit_currency]=USD&meta[send_limit_period]=month`;
 

@@ -5,8 +5,9 @@ export default async function listAccount(req, res) {
   const { token, id } = query;
 
   let path = `/v2/accounts/${id}`;
-  if (req.method === 'GET') {
-    // Handle a GET request
+  if (req.method !== 'GET') {
+    res.status(400).json({ error: 'Method not allowed' });
+  } else {
     try {
       const getAccount = await makeCall(token, path);
       const response = await getAccount.json();
@@ -14,10 +15,7 @@ export default async function listAccount(req, res) {
 
       return res.status(200).json(AccountById);
     } catch (error) {
-      res.status(500).json({ error: 'Something went wrong' });
+      res.status(500).json({ error: error.message });
     }
-  } else {
-    // Handle any other HTTP method
-    res.status(400).json({ error: 'Method not allowed' });
   }
 }

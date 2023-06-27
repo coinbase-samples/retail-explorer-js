@@ -26,7 +26,7 @@ const ProfileProvider = ({ children }) => {
 
   const [userProfile, setUserProfile] = useState({});
 
-  const getProfile = async (token) => {
+  const getProfile = async token => {
     if (fetching && userProfile?.name && loading) {
       return;
     }

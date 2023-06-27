@@ -44,7 +44,7 @@ export function SendForm(props) {
     console.log('this is the txn details:', sendDetails);
   }, [sendDetails]);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async event => {
     event.preventDefault();
 
     try {
@@ -70,7 +70,7 @@ export function SendForm(props) {
       console.log('error', error);
     }
   };
-  const handle2FA = (value) => {
+  const handle2FA = value => {
     const decimalRegex = /^\d*\.?\d*$/;
 
     if (decimalRegex.test(value)) {
@@ -80,12 +80,12 @@ export function SendForm(props) {
     }
   };
 
-  const handleTo = async (value) => {
+  const handleTo = async value => {
     setTo(value);
     setError('');
   };
 
-  const handleAmount = (value) => {
+  const handleAmount = value => {
     const decimalRegex = /^\d*\.?\d*$/;
 
     if (decimalRegex.test(value)) {

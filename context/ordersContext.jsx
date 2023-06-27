@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, createContext } from 'react';
 
 const defaultState = {};
 
@@ -42,10 +42,10 @@ const OrdersProvider = ({ children }) => {
     setOrderLoading(true);
 
     const fetchOrderById = await fetch(
-      `/api/orders/${order_id}?token=${token}&account_id=${account_id}`,
+      `/api/orders/${order_id}?token=${token}`,
       {
         method: 'GET',
-      }
+      },
     );
     try {
       const data = await fetchOrderById.json();
@@ -61,7 +61,7 @@ const OrdersProvider = ({ children }) => {
     }
   };
 
-  const getOrders = async (token, account_id, asset) => {
+  const getOrders = async (token, asset) => {
     if (fetching && userOrders === [] && loading) {
       return;
     }
@@ -74,7 +74,7 @@ const OrdersProvider = ({ children }) => {
         `/api/orders?token=${token}&asset=${asset}`,
         {
           method: 'GET',
-        }
+        },
       );
       const data = await orderResponse.json();
       if (data.errors) {
@@ -105,7 +105,7 @@ const OrdersProvider = ({ children }) => {
         `/api/orders/open?token=${token}&product_id=${asset}`,
         {
           method: 'GET',
-        }
+        },
       );
       const data = await orderResponse.json();
 
@@ -125,7 +125,7 @@ const OrdersProvider = ({ children }) => {
     quote_size,
     side,
     type = 'MARKET',
-    limitPrice = ''
+    limitPrice = '',
   ) => {
     let path;
     try {
@@ -142,7 +142,7 @@ const OrdersProvider = ({ children }) => {
       const data = await createOrderResponse.json();
       console.log('context ', data);
       setUserOrder(data);
-      setUserOrders((prevOrders) => [...prevOrders, data]);
+      setUserOrders(prevOrders => [...prevOrders, data]);
       setPlacingOrderLoading(false);
       setPlacingOrder(false);
     } catch (error) {
