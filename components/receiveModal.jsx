@@ -1,4 +1,20 @@
-import React, { useState, useEffect, useContext } from "react";
+/**
+ * Copyright 2023 Coinbase Global, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import React, { useState, useEffect, useContext } from 'react';
 
 import {
   Button,
@@ -8,15 +24,15 @@ import {
   Box,
   SpaceBetween,
   Input,
-} from "@cloudscape-design/components";
+} from '@cloudscape-design/components';
 
-import { AssetContext } from "../context/assetContext";
+import { AssetContext } from '../context/assetContext';
 
 export function ReceiveForm(props) {
   const { token } = props;
   const { asset } = useContext(AssetContext);
   const [address, setAddress] = useState({});
-  const [addressName, setAddressName] = useState("");
+  const [addressName, setAddressName] = useState('');
 
   const closeModal = () => {
     props.close();
@@ -28,12 +44,12 @@ export function ReceiveForm(props) {
       const path = `/api/addresses/${asset}?token=${token}&name=${addressName}`;
 
       const createAddressResponse = await fetch(path, {
-        method: "POST",
+        method: 'POST',
       });
       const response = await createAddressResponse.json();
       setAddress(response);
     } catch (error) {
-      console.log("error", error);
+      console.log('error', error);
 
       closeModal();
     }
