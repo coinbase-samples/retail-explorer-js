@@ -1,3 +1,19 @@
+/**
+ * Copyright 2023 Coinbase Global, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import React, { useContext } from 'react';
 import { TopNavigation } from '@cloudscape-design/components';
 import { ProfileContext } from '../context/profileContext';
@@ -9,7 +25,7 @@ export default function Header() {
   const router = useRouter();
   const { setAuthToken, authToken } = useContext(UserContext);
 
-  const handleLogoClick = e => {
+  const handleLogoClick = (e) => {
     e.preventDefault();
     router.push('/');
   };
@@ -22,7 +38,7 @@ export default function Header() {
         `/api/oauth/revoke?token=${authToken}`,
         {
           method: 'POST',
-        },
+        }
       );
       const data = await revokeResponse.json();
       setAuthToken([]);
@@ -31,7 +47,7 @@ export default function Header() {
     }
   };
 
-  const onMenuClick = async e => {
+  const onMenuClick = async (e) => {
     if (e.detail.id === 'signout') {
       await signout();
       setUserProfile({});

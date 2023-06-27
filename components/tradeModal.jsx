@@ -1,3 +1,19 @@
+/**
+ * Copyright 2023 Coinbase Global, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import React, { useState, useEffect, useContext } from 'react';
 
 import {
@@ -41,7 +57,7 @@ export function TradeForm(props) {
     props.close();
   };
 
-  const handleQuoteSize = quote => {
+  const handleQuoteSize = (quote) => {
     const decimalRegex = /^\d+(\.\d+)?$/;
     if (decimalRegex.test(quote)) {
       setQuoteSize(quote);
@@ -51,7 +67,7 @@ export function TradeForm(props) {
     }
   };
 
-  const handleBaseCurrency = bsc => {
+  const handleBaseCurrency = (bsc) => {
     if (!isNaN(+bsc)) {
       setBaseCurrency(bsc);
     } else {
@@ -59,7 +75,7 @@ export function TradeForm(props) {
     }
   };
 
-  const handlePrice = price => {
+  const handlePrice = (price) => {
     const decimalRegex = /^\d+(\.\d+)?$/;
     if (decimalRegex.test(price)) {
       setLimitPrice(price);
@@ -68,7 +84,7 @@ export function TradeForm(props) {
     }
   };
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const order = await createOrder(
@@ -80,7 +96,7 @@ export function TradeForm(props) {
           : quoteSize,
         selectedOrderSide.value,
         selectedOrderType.value,
-        limitPrice,
+        limitPrice
       );
     } catch (error) {
       console.log('error', error);
@@ -93,7 +109,7 @@ export function TradeForm(props) {
     if (userOrder.success !== null) {
       if (userOrder.success === true) {
         alert(
-          `Your order success was ${userOrder?.success} and your Order Id is ${userOrder.order_id}.`,
+          `Your order success was ${userOrder?.success} and your Order Id is ${userOrder.order_id}.`
         );
         setUserOrder({});
         closeModal();

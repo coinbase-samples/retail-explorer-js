@@ -1,3 +1,19 @@
+/**
+ * Copyright 2023 Coinbase Global, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import React, { useState, useEffect, createContext } from 'react';
 
 const defaultState = {};
@@ -29,7 +45,7 @@ const OrdersProvider = ({ children }) => {
       `/api/orders/${order_id}?token=${token}&account_id=${account_id}`,
       {
         method: 'GET',
-      },
+      }
     );
     try {
       const data = await fetchOrderById.json();
@@ -58,7 +74,7 @@ const OrdersProvider = ({ children }) => {
         `/api/orders?token=${token}&asset=${asset}`,
         {
           method: 'GET',
-        },
+        }
       );
       const data = await orderResponse.json();
       if (data.errors) {
@@ -89,7 +105,7 @@ const OrdersProvider = ({ children }) => {
         `/api/orders/open?token=${token}&product_id=${asset}`,
         {
           method: 'GET',
-        },
+        }
       );
       const data = await orderResponse.json();
 
@@ -109,7 +125,7 @@ const OrdersProvider = ({ children }) => {
     quote_size,
     side,
     type = 'MARKET',
-    limitPrice = '',
+    limitPrice = ''
   ) => {
     let path;
     try {
@@ -126,7 +142,7 @@ const OrdersProvider = ({ children }) => {
       const data = await createOrderResponse.json();
       console.log('context ', data);
       setUserOrder(data);
-      setUserOrders(prevOrders => [...prevOrders, data]);
+      setUserOrders((prevOrders) => [...prevOrders, data]);
       setPlacingOrderLoading(false);
       setPlacingOrder(false);
     } catch (error) {
