@@ -14,7 +14,7 @@ Install dependencies
 npm install
 ```
 
-Create a .env file in the root of the directory and plugin your apps OAuth credentials
+Create a .env file in the root of the directory and plugin your apps Coinbase credentials. You can find them here:  https://www.coinbase.com/settings/api >> click 'New Oauth2 Application'
 
 ````
 NEXT_PUBLIC_CLIENT_ID={{YOUR_CLIENT_ID}
