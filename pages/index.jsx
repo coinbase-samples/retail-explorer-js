@@ -33,7 +33,7 @@ export default function HomePage() {
 
   useEffect(() => {
     const token = authToken?.access_token;
-    if (Object.keys(authToken || {}).length === 0 && code === undefined) {
+    if (!authToken && code === undefined) {
       return;
     } else if ((code && !gettingToken && token !== undefined) || token) {
       setLoading(true);
@@ -46,7 +46,7 @@ export default function HomePage() {
         .then(() => {
           setLoading(false);
         })
-        .catch(error => {
+        .catch((error) => {
           // Handle any error that occurs during token retrieval
           setLoading(false);
           console.error(error);
