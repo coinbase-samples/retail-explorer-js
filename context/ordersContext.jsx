@@ -38,16 +38,17 @@ const OrdersProvider = ({ children }) => {
     if (orderFetching && order === {} && orderLoading) {
       return;
     }
-    setOrderFetching(true);
-    setOrderLoading(true);
-
-    const fetchOrderById = await fetch(
-      `/api/orders/${orderId}?token=${token}`,
-      {
-        method: 'GET',
-      }
-    );
+   
     try {
+       setOrderFetching(true);
+       setOrderLoading(true);
+
+       const fetchOrderById = await fetch(
+         `/api/orders/${orderId}?token=${token}`,
+         {
+           method: 'GET',
+         }
+       );
       const data = await fetchOrderById.json();
 
       setOrder(data);

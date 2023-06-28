@@ -41,7 +41,7 @@ export function SendForm(props) {
   };
 
   useEffect(() => {
-    console.log('this is the txn details:', sendDetails);
+    console.log('this is the txn details: ', sendDetails);
   }, [sendDetails]);
 
   const handleSubmit = async event => {
@@ -116,7 +116,7 @@ export function SendForm(props) {
                     id="submit"
                     variant={
                       Object.keys(sendDetails).length !== 0
-                        ? 'ternary'
+                        ? 'normal'
                         : 'primary'
                     }
                   >

@@ -109,7 +109,7 @@ export function TradeForm(props) {
     if (userOrder.success !== null) {
       if (userOrder.success === true) {
         alert(
-          `Your order success was ${userOrder?.success} and your Order Id is ${userOrder.order_id}.`,
+          `Your order success is ${userOrder?.success} and your Order Id is ${userOrder.order_id}.`,
         );
         setUserOrder({});
         closeModal();
@@ -126,7 +126,6 @@ export function TradeForm(props) {
       closeAriaLabel="Close modal"
       header="Place order"
     >
-      {/* <h3>Please select the asset you would like to view:</h3> */}
       {placingOrder ? <Spinner /> : null}
       <form onSubmit={handleSubmit}>
         <Form

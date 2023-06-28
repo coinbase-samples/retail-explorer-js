@@ -31,10 +31,10 @@ function Orders(props) {
   const {
     getOrders,
     userOrders,
-    ordersLoading: ordersLoaded,
+    ordersLoading,
     order,
     getOrderByID,
-    orderLoading: orderLoaded,
+    orderLoading,
     setOrderLoading,
   } = useContext(OrdersContext);
 
@@ -81,7 +81,7 @@ function Orders(props) {
           {
             id: 'order_id',
             header: 'Order Id',
-            cell: e => e.order_id,
+            cell: (e) => e.order_id,
             width: 150,
             minWidth: 150,
             sortingField: 'order_id',
@@ -89,7 +89,7 @@ function Orders(props) {
           {
             id: 'asset',
             header: 'Asset',
-            cell: e => e.product_id,
+            cell: (e) => e.product_id,
             width: 130,
             minWidth: 130,
             sortingField: 'asset',
@@ -97,7 +97,7 @@ function Orders(props) {
           {
             id: 'size',
             header: 'Size',
-            cell: e => e.size,
+            cell: (e) => e.size,
             width: 135,
             minWidth: 135,
             sortingField: 'size',
@@ -105,7 +105,7 @@ function Orders(props) {
           {
             id: 'created_at',
             header: 'Order Date',
-            cell: e => e.trade_time,
+            cell: (e) => e.trade_time,
             width: 150,
             minWidth: 150,
             sortingField: 'created_at',
@@ -113,7 +113,7 @@ function Orders(props) {
           {
             id: 'details',
             header: 'Details',
-            cell: e => (
+            cell: (e) => (
               <Button onClick={() => openModal(e.order_id)}>Details</Button>
             ),
             width: 150,
@@ -121,7 +121,7 @@ function Orders(props) {
           },
         ]}
         items={userOrders}
-        loading={ordersLoaded}
+        loading={ordersLoading}
         loadingText="Loading Orders..."
         empty={
           <Box textAlign="center" color="inherit">
@@ -152,8 +152,10 @@ function Orders(props) {
                 borders="horizontal"
                 columns={2}
                 loadingText="Loading Order Detail..."
-                loading={orderLoaded}
+                loading={orderLoading}
               >
+                <h3>Asset:</h3>
+                {order?.product_id}
                 <h4>Order Id:</h4>
                 {order?.order_id}
                 <h4>Status:</h4>
