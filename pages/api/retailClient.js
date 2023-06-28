@@ -15,8 +15,8 @@ export const makeCall = async (
   } else {
     headers = requestHeaders(false, token);
   }
- 
-  console.log(headers)
+
+  console.log(headers);
   try {
     const options = {
       method,

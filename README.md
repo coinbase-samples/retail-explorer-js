@@ -1,6 +1,6 @@
 Built with [Next.js](https://nextjs.org/), Retail Explorer is a reference implementation app showing how to connect Coinbase users to a third party app using [OAuth2.0- OAuth 2.0 is the industry-standard protocol for authorization.](https://oauth.net/2/).
 
- Once connected Retail Explorer offers advanced trading, sending and receiving of crypto assets.
+Once connected Retail Explorer offers advanced trading, sending and receiving of crypto assets.
 
 ## Getting Started
 
@@ -16,7 +16,7 @@ Install dependencies
 npm install
 ```
 
-Create a .env file in the root of the directory and plugin your apps Coinbase credentials. You can find them here:  https://www.coinbase.com/settings/api >> click 'New Oauth2 Application'
+Create a .env file in the root of the directory and plugin your apps Coinbase credentials. You can find them here: https://www.coinbase.com/settings/api >> click 'New Oauth2 Application'
 
 ````
 NEXT_PUBLIC_CLIENT_ID={{YOUR_CLIENT_ID}
