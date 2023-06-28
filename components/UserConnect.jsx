@@ -23,14 +23,11 @@ import {
   Box,
   SpaceBetween,
 } from '@cloudscape-design/components';
+import { redirectUri, clientId, oauthUrl } from '../utils/constants';
 
 export function UserConnect({open, close}) {
   const [connectModal, setConnectModal] = useState(false);
   const [selectedScopeOptions, setSelectedScopeOptions] = React.useState([]);
-
-  const redirectUri = process.env.NEXT_PUBLIC_REDIRECT_URI;
-  const clientId = process.env.NEXT_PUBLIC_CLIENT_ID;
-  const OAUTH_BASE_URL = process.env.NEXT_PUBLIC_OAUTH_BASE_URL;
 
   useEffect(() => {
     if (window.opener) {
@@ -54,7 +51,7 @@ export function UserConnect({open, close}) {
   const initiateOauth = () => {
     const scope = selectedScopeOptions.map(scope => scope.value).join(' ');
     const state = generateRandomString(10);
-    const authorizeUrl = `${OAUTH_BASE_URL}/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}&state=${state}&account=all&meta[account]=all&meta[send_limit_amount]=1.00&meta[send_limit_currency]=USD&meta[send_limit_period]=month`;
+    const authorizeUrl = `${oauthUrl}/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}&state=${state}&account=all&meta[account]=all&meta[send_limit_amount]=1.00&meta[send_limit_currency]=USD&meta[send_limit_period]=month`;
 
     window.location.href = authorizeUrl;
   };
