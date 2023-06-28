@@ -1,6 +1,3 @@
-import * as React from 'react';
-import { useContext, useEffect } from 'react';
-import { AssetContext } from '../context/assetContext';
 /**
  * Copyright 2023 Coinbase Global, Inc.
  *
@@ -17,7 +14,9 @@ import { AssetContext } from '../context/assetContext';
  * limitations under the License.
  */
 
-import { OrdersContext } from '../context/ordersContext';
+import * as React from 'react';
+import { useContext, useEffect } from 'react';
+import { AssetContext } from '../context/assetContext';
 import { Icons } from '../utils/Icons';
 import { TradeForm } from './TradeModal';
 import { ReceiveForm } from './ReceiveModal';
@@ -33,17 +32,10 @@ import {
 } from '@cloudscape-design/components';
 
 function AssetInfo(props) {
-  const {
-    userAsset,
-    assetLoading,
-    getAsset,
-    asset,
-  } = useContext(AssetContext);
-
+  const { userAsset, assetLoading, getAsset, asset } = useContext(AssetContext);
   const [tradeModal, setTradeModal] = React.useState(false);
   const [receiveModal, setReceiveModal] = React.useState(false);
   const [sendModal, setSendModal] = React.useState(false);
-
   const [product, setProduct] = React.useState(0);
   const token = props.token;
   const closeTradeModal = () => {
@@ -79,12 +71,10 @@ function AssetInfo(props) {
 
   const handleSend = () => {
     setSendModal(true);
-    // code to execute the 'transfer' action
   };
 
   const handleReceive = () => {
     setReceiveModal(true);
-    // code to execute the 'transfer' action
   };
 
   const handleTrade = () => {
