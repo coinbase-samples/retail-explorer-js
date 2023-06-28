@@ -55,10 +55,6 @@ export function ReceiveForm(props) {
     }
   };
 
-  const handleAddressName = name => {
-    setAddressName(name);
-  };
-
   return (
     <Modal
       onDismiss={closeModal}
@@ -92,7 +88,7 @@ export function ReceiveForm(props) {
               id="addressName"
               name="addressName"
               value={addressName}
-              onChange={({ detail }) => handleAddressName(detail.value)}
+              onChange={setAddressName(detail.value)}
             />
           </FormField>
 

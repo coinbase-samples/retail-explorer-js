@@ -30,32 +30,26 @@ const OrdersProvider = ({ children }) => {
   const [userOpenOrders, setUserOpenOrders] = useState([]);
   const [openOrdersLoaded, setOpenOrdersLoaded] = useState(true);
   const [order, setOrder] = useState({});
-  const [orderFetching, setOrderFetching] = useState(false);
   const [placingOrder, setPlacingOrder] = useState(false);
   const [placingOrderLoading, setPlacingOrderLoading] = useState(false);
   const [userOrder, setUserOrder] = useState({});
   const getOrderByID = async (token, orderId) => {
-    if (orderFetching && order === {} && orderLoading) {
+    if (order === {} && orderLoading) {
       return;
     }
 
     try {
-      setOrderFetching(true);
       setOrderLoading(true);
-
       const fetchOrderById = await fetch(
         `/api/orders/${orderId}?token=${token}`,
       );
       const data = await fetchOrderById.json();
-
       setOrder(data);
       setOrderLoading(false);
-      setOrderFetching(false);
     } catch (error) {
       setOrder({});
       console.log('error', error);
       setOrderLoading(false);
-      setOrderFetching(false);
     }
   };
 
