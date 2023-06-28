@@ -18,21 +18,19 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Table, Box } from '@cloudscape-design/components';
 import { TransactionsContext } from '../context/transactionsContext';
 
-function Transactions(props) {
+function Transactions({token, asset }) {
   const {
     transactions,
     transactionsLoading: transactionsLoaded,
     getTransactions,
   } = useContext(TransactionsContext);
 
-  const { token, asset } = props;
-
   useEffect(() => {
     if (transactions !== []) {
       console.log('calling transactions context', asset);
       getTransactions(token, asset);
     }
-  }, [asset]); // useEffect now depends on userOpenOrders
+  }, [asset]); 
 
   return (
     <>

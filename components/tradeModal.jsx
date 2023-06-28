@@ -31,11 +31,10 @@ import {
 import { AssetContext } from '../context/assetContext';
 import { OrdersContext } from '../context/ordersContext';
 
-export function TradeForm(props) {
+export function TradeForm({token, price, open, close}) {
   const { userOrder, placingOrder, createOrder, setUserOrder } =
     useContext(OrdersContext);
 
-  const { token, price } = props;
   const { asset } = useContext(AssetContext);
   const [quoteSize, setQuoteSize] = useState('1');
   const [error, setError] = useState('');
@@ -54,7 +53,7 @@ export function TradeForm(props) {
   });
 
   const closeModal = () => {
-    props.close();
+    close();
   };
 
   const handleQuoteSize = quote => {
@@ -122,7 +121,7 @@ export function TradeForm(props) {
   return (
     <Modal
       onDismiss={closeModal}
-      visible={props.open}
+      visible={open}
       closeAriaLabel="Close modal"
       header="Place order"
     >

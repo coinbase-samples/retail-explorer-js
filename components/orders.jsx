@@ -27,18 +27,19 @@ import {
 import { OrdersContext } from '../context/ordersContext';
 
 import { AssetContext } from '../context/assetContext';
-function Orders(props) {
+function Orders({token}) {
   const {
     getOrders,
     userOrders,
     ordersLoading,
     order,
     getOrderByID,
+    orderLoading,
     setOrderLoading,
   } = useContext(OrdersContext);
   const [detailsModal, setDetailsModal] = useState(false);
   const { asset } = useContext(AssetContext);
-  const token = props.token;
+
 
   useEffect(() => {
     if (userOrders !== []) {

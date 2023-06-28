@@ -28,8 +28,7 @@ import {
 
 import { AssetContext } from '../context/assetContext';
 
-export function ReceiveForm(props) {
-  const { token } = props;
+export function ReceiveForm({ token }) {
   const { asset } = useContext(AssetContext);
   const [address, setAddress] = useState({});
   const [addressName, setAddressName] = useState('');

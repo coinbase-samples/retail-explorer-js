@@ -24,7 +24,7 @@ import {
   SpaceBetween,
 } from '@cloudscape-design/components';
 
-export function UserConnect(props) {
+export function UserConnect({open, close}) {
   const [connectModal, setConnectModal] = useState(false);
   const [selectedScopeOptions, setSelectedScopeOptions] = React.useState([]);
 
@@ -60,13 +60,13 @@ export function UserConnect(props) {
   };
   const closeModal = () => {
     setConnectModal(false);
-    props.close();
+    close();
   };
 
   return !connectModal ? (
     <Modal
       onDismiss={closeModal}
-      visible={props.open}
+      visible={open}
       closeAriaLabel="Close modal"
       footer={
         <Box float="right">

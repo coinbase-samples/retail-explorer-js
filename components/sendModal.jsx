@@ -26,8 +26,7 @@ import {
 } from '@cloudscape-design/components';
 import { AssetContext } from '../context/assetContext';
 
-export function SendForm(props) {
-  const { token } = props;
+export function SendForm({ token, open, close }) {
   const { asset } = useContext(AssetContext);
   const [sendDetails, setSendDetails] = useState({});
   const [to, setTo] = useState('');
@@ -37,7 +36,7 @@ export function SendForm(props) {
   const [twoFAcode, setTwoFAcode] = useState('');
 
   const closeModal = () => {
-    props.close();
+    close();
   };
 
   useEffect(() => {
@@ -98,7 +97,7 @@ export function SendForm(props) {
   return (
     <Modal
       onDismiss={closeModal}
-      visible={props.open}
+      visible={open}
       closeAriaLabel="Close modal"
       header="Send Crypto"
     >

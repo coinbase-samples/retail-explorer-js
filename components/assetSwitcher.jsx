@@ -26,7 +26,7 @@ import {
 
 import { AssetContext } from '../context/assetContext';
 
-export function AssetSwitcher(props) {
+export function AssetSwitcher({ open, close }) {
   const { setAsset } = useContext(AssetContext);
   const [selectedAssetOption, setSelectedAssetOption] = useState({
     label: 'ETH-USD',
@@ -34,16 +34,16 @@ export function AssetSwitcher(props) {
   });
 
   useEffect(() => {
-    if (props.open) {
+    if (open) {
       setSelectedAssetOption({
         label: 'ETH-USD',
         value: 'ETH',
       });
     }
-  }, [props.open]);
+  }, [open]);
 
   const closeModal = () => {
-    props.close();
+    close();
   };
 
   const initiateAssetSwitch = () => {
@@ -54,7 +54,7 @@ export function AssetSwitcher(props) {
   return (
     <Modal
       onDismiss={closeModal}
-      visible={props.open}
+      visible={open}
       closeAriaLabel="Close modal"
       footer={
         <Box float="right">

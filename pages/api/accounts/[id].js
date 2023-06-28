@@ -5,7 +5,9 @@ export default async function listAccount(req, res) {
   let path = `/v2/accounts/${id}`;
   if (req.method !== 'GET') {
     res.status(400).json({ error: 'Method not allowed' });
-  } else {
+    return
+  } 
+
     try {
       const getAccount = await makeCall(token, path);
       const response = await getAccount.json();
@@ -16,4 +18,4 @@ export default async function listAccount(req, res) {
       res.status(500).json({ error: error.message });
     }
   }
-}
+

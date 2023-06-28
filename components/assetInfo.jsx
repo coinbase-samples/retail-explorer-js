@@ -31,13 +31,12 @@ import {
   SpaceBetween,
 } from '@cloudscape-design/components';
 
-function AssetInfo(props) {
+function AssetInfo({ token }) {
   const { userAsset, assetLoading, getAsset, asset } = useContext(AssetContext);
   const [tradeModal, setTradeModal] = React.useState(false);
   const [receiveModal, setReceiveModal] = React.useState(false);
   const [sendModal, setSendModal] = React.useState(false);
   const [product, setProduct] = React.useState(0);
-  const token = props.token;
   const closeTradeModal = () => {
     setTradeModal(false);
     setReceiveModal(false);

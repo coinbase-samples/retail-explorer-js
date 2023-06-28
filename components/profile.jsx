@@ -20,15 +20,14 @@ import { ProfileContext } from '../context/profileContext';
 import { AssetContext } from '../context/assetContext';
 import { HelpPanel, ColumnLayout } from '@cloudscape-design/components';
 
-function Profile(props) {
+function Profile({ token }) {
   const {
     userProfile,
     profileLoading: profileLoaded,
     getProfile,
   } = useContext(ProfileContext);
 
-  const token = props.token;
-  //   const profileValues = userProfile.length > 0;
+
   useEffect(() => {
     if (Object.keys(userProfile).length === 0) {
       getProfile(token);

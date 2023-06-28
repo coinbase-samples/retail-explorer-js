@@ -27,7 +27,7 @@ import {
 import { OrdersContext } from '../context/ordersContext';
 
 import { AssetContext } from '../context/assetContext';
-function OpenOrders(props) {
+function OpenOrders({ token }) {
   const {
     getOpenOrders,
     userOpenOrders,
@@ -40,7 +40,6 @@ function OpenOrders(props) {
   const [detailsModal, setDetailsModal] = useState(false);
 
   const { asset } = useContext(AssetContext);
-  const token = props.token;
 
   useEffect(() => {
     if (userOpenOrders !== []) {
