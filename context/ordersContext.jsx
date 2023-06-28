@@ -45,9 +45,6 @@ const OrdersProvider = ({ children }) => {
 
       const fetchOrderById = await fetch(
         `/api/orders/${orderId}?token=${token}`,
-        {
-          method: 'GET',
-        },
       );
       const data = await fetchOrderById.json();
 
@@ -63,6 +60,7 @@ const OrdersProvider = ({ children }) => {
   };
 
   const getOrders = async (token, asset) => {
+    console.log('asset from context', asset);
     if (fetching && userOrders === [] && loading) {
       return;
     }
@@ -73,9 +71,6 @@ const OrdersProvider = ({ children }) => {
 
       const orderResponse = await fetch(
         `/api/orders?token=${token}&asset=${asset}`,
-        {
-          method: 'GET',
-        },
       );
       const data = await orderResponse.json();
       if (data.errors) {
@@ -104,9 +99,6 @@ const OrdersProvider = ({ children }) => {
 
       const orderResponse = await fetch(
         `/api/orders/open?token=${token}&product_id=${asset}`,
-        {
-          method: 'GET',
-        },
       );
       const data = await orderResponse.json();
 

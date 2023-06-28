@@ -31,9 +31,7 @@ const ProfileProvider = ({ children }) => {
       return;
     }
     setFetching(true);
-    const tokenResponse = await fetch(`/api/user?token=${token}`, {
-      method: 'GET',
-    });
+    const tokenResponse = await fetch(`/api/user?token=${token}`);
 
     const data = await tokenResponse.json();
 

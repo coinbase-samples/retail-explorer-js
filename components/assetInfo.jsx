@@ -50,9 +50,7 @@ function AssetInfo(props) {
   const fetchProduct = async () => {
     const path = `/api/products/${asset}-USD?token=${token}`;
     try {
-      const productResponse = await fetch(path, {
-        method: 'GET',
-      });
+      const productResponse = await fetch(path);
       const productData = await productResponse.json();
       setProduct(productData);
     } catch (error) {

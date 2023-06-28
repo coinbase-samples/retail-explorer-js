@@ -46,7 +46,7 @@ function Orders(props) {
 
   useEffect(() => {
     if (userOrders !== []) {
-      getOrders(token, walletId, asset);
+      getOrders(token, asset);
     }
   }, [asset]);
 
@@ -55,7 +55,6 @@ function Orders(props) {
   };
 
   const openModal = async id => {
-    console.log('this is the id', id);
     setDetailsModal(true);
     setOrderLoading(true);
     await getOrderByID(token, id);
