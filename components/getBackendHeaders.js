@@ -18,8 +18,8 @@ function getBackendHeaders() {
     const headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      'X-CC-Api-Key': process.env.NEXT_PUBLIC_API_KEY, 
-      'X-CC-Version': process.env.NEXT_PUBLIC_API_VERSION, 
+      'X-CC-Api-Key': process.env.NEXT_PUBLIC_API_KEY,
+      'X-CC-Version': process.env.NEXT_PUBLIC_API_VERSION,
       Mode: 'cors',
     };
     return headers;
