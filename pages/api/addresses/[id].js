@@ -8,7 +8,9 @@ export default async function createAddress(req, res) {
 
   let path = `/v2/accounts/${id}/addresses`;
 
-  if (req.method === 'POST') {
+  if (req.method !== 'POST') {
+     return  res.status(400).json({ error: 'Method not allowed' });
+  }
     try {
       const generateAddress = await makeCall(token, path, 'POST', payload);
       const response = await generateAddress.json();
@@ -19,8 +21,5 @@ export default async function createAddress(req, res) {
       console.log('this was the user orders error', error);
       res.status(500).json({ error: 'Something went wrong' });
     }
-  } else {
-    // Handle any other HTTP method
-    res.status(400).json({ error: 'Method not allowed' });
-  }
-}
+  } 
+

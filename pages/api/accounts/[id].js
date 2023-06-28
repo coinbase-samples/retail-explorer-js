@@ -7,7 +7,7 @@ export default async function listAccount(req, res) {
     res.status(400).json({ error: 'Method not allowed' });
     return
   } 
-
+  
     try {
       const getAccount = await makeCall(token, path);
       const response = await getAccount.json();

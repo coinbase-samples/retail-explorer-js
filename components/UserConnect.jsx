@@ -16,7 +16,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { SelectScopes } from './selectScopes';
-
+import { generateRandomString } from '../utils/randomString';
 import {
   Button,
   Modal,
@@ -35,18 +35,6 @@ export function UserConnect({open, close}) {
     }
   }, []);
 
-  function generateRandomString(length) {
-    let result = '';
-    const characters =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const charactersLength = characters.length;
-
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-
-    return result;
-  }
 
   const initiateOauth = () => {
     const scope = selectedScopeOptions.map(scope => scope.value).join(' ');

@@ -1,11 +1,13 @@
 import { makeCall } from '../../retailClient';
 import { uuid } from 'uuidv4';
-import { response } from 'express';
+
 export default async function orders(req, res) {
   const { token, to, amount, asset, twoFAcode } = req.query;
   let path = `/v2/accounts/${asset}/transactions`;
   let payload;
-  if (req.method === 'POST') {
+  if (req.method !== 'POST' || req.method !== 'GET') {
+    return res.status(400).json({ error: 'Method not allowed' });
+  }
     const body = {
       type: 'send',
       amount,
@@ -34,11 +36,7 @@ export default async function orders(req, res) {
         return res.status(500).json({ error: response.errors[0] });
       }
     } catch (error) {
-      console.log('this was the  send error', error);
-      res.status(500).json({ error: error.message });
+      return res.status(500).json({ error: error.message });
     }
-  } else {
-    // Handle any other HTTP method
-    res.status(400).json({ error: 'Method not allowed' });
-  }
-}
+  } 
+
