@@ -31,28 +31,25 @@ function OpenOrders(props) {
   const {
     getOpenOrders,
     userOpenOrders,
-    OpenOrdersLoading: openOrdersLoaded,
+    OpenOrdersLoading,
     order,
     getOrderByID,
-    orderLoading: orderLoaded,
+    orderLoading,
     setOrderLoading,
   } = useContext(OrdersContext);
 
-  const { userAsset, asset } = useContext(AssetContext);
-  const assetObject = userAsset;
-  const walletId = assetObject?.id;
+  const { asset } = useContext(AssetContext);
   const token = props.token;
   const [detailsModal, setDetailsModal] = useState(false);
 
   useEffect(() => {
     if (userOpenOrders !== []) {
-      getOpenOrders(token, walletId, asset);
+      getOpenOrders(token, asset);
     }
-  }, [asset]); // useEffect now depends on userOpenOrders
+  }, [asset]); 
 
   const handleSort = sortingState => {
-    // using sortingState instead of event
-    userOpenOrders(sortingState); // updating userOpenOrders with sorting state
+    userOpenOrders(sortingState);
   };
 
   const openModal = async id => {
@@ -121,7 +118,7 @@ function OpenOrders(props) {
           },
         ]}
         items={userOpenOrders}
-        loading={openOrdersLoaded}
+        loading={OpenOrdersLoading}
         loadingText="Loading Open Orders..."
         empty={
           <Box textAlign="center" color="inherit">
@@ -155,7 +152,7 @@ function OpenOrders(props) {
                 borders="horizontal"
                 columns={2}
                 loadingText="Loading Order Detail..."
-                loading={orderLoaded}
+                loading={orderLoading}
               >
                 <h4>Order Id:</h4>
                 {order?.order_id}

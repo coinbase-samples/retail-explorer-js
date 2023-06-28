@@ -34,13 +34,10 @@ function Orders(props) {
     ordersLoading,
     order,
     getOrderByID,
-    orderLoading,
     setOrderLoading,
   } = useContext(OrdersContext);
 
-  const { userAsset, asset } = useContext(AssetContext);
-  const assetObject = userAsset;
-  const walletId = assetObject[0]?.id;
+  const { asset } = useContext(AssetContext);
   const token = props.token;
   const [detailsModal, setDetailsModal] = useState(false);
 
