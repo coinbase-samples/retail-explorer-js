@@ -37,10 +37,10 @@ import { AssetContext } from '../context/assetContext';
 export function Landing() {
   const router = useRouter();
   const [assetModal, setAssetModal] = useState(false);
-  const { authToken } = useContext(UserContext);
   const { query } = router;
   const { asset } = useContext(AssetContext); // Retrieve asset from AssetContext
   const token = query.token;
+  let assetSwitcherComponent = null;
 
   useEffect(() => {
     if (asset === '') {
@@ -51,8 +51,6 @@ export function Landing() {
   const closeAssetModal = () => {
     setAssetModal(false);
   };
-
-  let assetSwitcherComponent = null;
 
   if (asset === '' || assetModal) {
     assetSwitcherComponent = (

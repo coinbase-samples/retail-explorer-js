@@ -35,7 +35,7 @@ import {
 function AssetInfo(props) {
   const {
     userAsset,
-    assetLoading: assetLoaded,
+    assetLoading,
     getAsset,
     asset,
   } = useContext(AssetContext);
@@ -94,6 +94,7 @@ function AssetInfo(props) {
   return (
     <Container className="assetInfoContainer">
       <HelpPanel
+        loading={assetLoading}
         header={
           <Header
             actions={
