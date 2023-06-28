@@ -37,10 +37,10 @@ function OpenOrders(props) {
     orderLoading,
     setOrderLoading,
   } = useContext(OrdersContext);
+  const [detailsModal, setDetailsModal] = useState(false);
 
   const { asset } = useContext(AssetContext);
   const token = props.token;
-  const [detailsModal, setDetailsModal] = useState(false);
 
   useEffect(() => {
     if (userOpenOrders !== []) {

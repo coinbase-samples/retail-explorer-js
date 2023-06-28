@@ -36,10 +36,9 @@ function Orders(props) {
     getOrderByID,
     setOrderLoading,
   } = useContext(OrdersContext);
-
+  const [detailsModal, setDetailsModal] = useState(false);
   const { asset } = useContext(AssetContext);
   const token = props.token;
-  const [detailsModal, setDetailsModal] = useState(false);
 
   useEffect(() => {
     if (userOrders !== []) {

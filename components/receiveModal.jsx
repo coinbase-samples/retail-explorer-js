@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 
 import {
   Button,
@@ -66,8 +66,6 @@ export function ReceiveForm(props) {
       closeAriaLabel="Close modal"
       header="Generate Address"
     >
-      {/* <h3>Please select the asset you would like to view:</h3> */}
-
       <form onSubmit={handleSubmit}>
         <Form
           id="receiveForm"
