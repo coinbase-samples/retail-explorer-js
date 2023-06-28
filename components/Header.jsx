@@ -43,7 +43,7 @@ export default function Header() {
       const data = await revokeResponse.json();
       setAuthToken([]);
     } catch (error) {
-      console.log('this was the token error', error);
+      console.log('this was the token error:', error);
     }
   };
 
@@ -59,10 +59,10 @@ export default function Header() {
     <TopNavigation
       identity={{
         href: '/',
-        title: 'Coin Auth',
+        title: 'Retail Explorer',
         logo: {
-          src: '../images/rose-interiors-logo.png',
-          alt: 'rose-interiors-logo',
+          src: '../images/retail-explorer-logo.png',
+          alt: 'retail-explorer-logo',
           onClick: handleLogoClick,
         },
       }}

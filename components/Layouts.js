@@ -35,7 +35,7 @@ export default function Layout({ title, keywords, description, children }) {
 }
 
 Layout.defaultProps = {
-  title: 'Coin Auth | Advanded Trading',
+  title: 'Retail Explorer',
   description: 'Trade, Transfer and receive crypto assets',
   keywords: 'trade, send, receive',
 };

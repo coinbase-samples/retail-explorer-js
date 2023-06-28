@@ -1,4 +1,6 @@
-Built with [Next.js](https://nextjs.org/), Coin Auth is a reference implementation app showing how to connect Coinbase users to a third party app using OAuth2.0. Once connected Coin Auth offers advanced trading, sending and receiving of crypto assets.
+Built with [Next.js](https://nextjs.org/), Retail Explorer is a reference implementation app showing how to connect Coinbase users to a third party app using [OAuth2.0- OAuth 2.0 is the industry-standard protocol for authorization.](https://oauth.net/2/).
+
+ Once connected Retail Explorer offers advanced trading, sending and receiving of crypto assets.
 
 ## Getting Started
 

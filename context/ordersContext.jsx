@@ -34,7 +34,7 @@ const OrdersProvider = ({ children }) => {
   const [placingOrder, setPlacingOrder] = useState(false);
   const [placingOrderLoading, setPlacingOrderLoading] = useState(false);
   const [userOrder, setUserOrder] = useState({});
-  const getOrderByID = async (token, account_id, order_id) => {
+  const getOrderByID = async (token, order_id) => {
     if (orderFetching && order === {} && orderLoading) {
       return;
     }
