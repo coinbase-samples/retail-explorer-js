@@ -1,9 +1,8 @@
 import { makeCall } from '../retailClient';
 
 export default async function ProductById(req, res) {
-  const { query } = req;
 
-  const { token, id } = query;
+  const { token, id } = req.query;
   let path = `/api/v3/brokerage/products/${id}`;
 
   if (req.method === 'GET') {

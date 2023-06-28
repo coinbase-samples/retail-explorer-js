@@ -1,8 +1,7 @@
 import { makeCall } from '../../retailClient';
 
 export default async function listOpenOrders(req, res) {
-  const { query } = req;
-  const { token, product_id } = query;
+  const { token, product_id } = req.query;
 
   let path = `/api/v3/brokerage/orders/historical/batch?order_status=OPEN&product_id=${product_id}-USD`;
 

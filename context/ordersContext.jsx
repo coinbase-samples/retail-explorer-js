@@ -34,7 +34,7 @@ const OrdersProvider = ({ children }) => {
   const [placingOrder, setPlacingOrder] = useState(false);
   const [placingOrderLoading, setPlacingOrderLoading] = useState(false);
   const [userOrder, setUserOrder] = useState({});
-  const getOrderByID = async (token, order_id) => {
+  const getOrderByID = async (token, orderId) => {
     if (orderFetching && order === {} && orderLoading) {
       return;
     }
@@ -42,10 +42,10 @@ const OrdersProvider = ({ children }) => {
     setOrderLoading(true);
 
     const fetchOrderById = await fetch(
-      `/api/orders/${order_id}?token=${token}`,
+      `/api/orders/${orderId}?token=${token}`,
       {
         method: 'GET',
-      },
+      }
     );
     try {
       const data = await fetchOrderById.json();
@@ -69,7 +69,7 @@ const OrdersProvider = ({ children }) => {
     try {
       setFetching(true);
       setOrdersLoading(true);
-
+      
       const orderResponse = await fetch(
         `/api/orders?token=${token}&asset=${asset}`,
         {

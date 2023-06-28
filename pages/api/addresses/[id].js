@@ -1,8 +1,7 @@
 import { makeCall } from '../retailClient';
 export default async function createAddress(req, res) {
-  const { query } = req;
 
-  const { token, id, name } = query;
+  const { token, id, name } = req.query;
   const body = {
     name,
   };

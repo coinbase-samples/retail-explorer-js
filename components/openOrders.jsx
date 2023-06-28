@@ -58,7 +58,7 @@ function OpenOrders(props) {
   const openModal = async id => {
     setDetailsModal(true);
     setOrderLoading(true);
-    await getOrderByID(token, walletId, id);
+    await getOrderByID(token, id);
   };
 
   const closeModal = () => {

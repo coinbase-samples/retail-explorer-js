@@ -1,8 +1,7 @@
 import { makeCall } from '../retailClient';
 
 export default async function OrderById(req, res) {
-
-  const { token, id } = req;
+  const { token, id } = req.query;
   let path = `/api/v3/brokerage/orders/historical/${id}`;
 
   if (req.method !== 'GET') {

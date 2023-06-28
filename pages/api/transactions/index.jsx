@@ -1,8 +1,7 @@
 import { makeCall } from '../retailClient';
 
 export default async function listTransactions(req, res) {
-  const { query } = req;
-  const { token, product_id } = query;
+  const { token, product_id } = req.query;
   let path = `/v2/accounts/${product_id}/transactions`;
 
   if (req.method === 'GET') {

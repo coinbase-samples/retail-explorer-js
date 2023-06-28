@@ -1,7 +1,6 @@
 import { makeCall } from '../retailClient';
 
 export default async function orders(req, res) {
-  const { query } = req;
   const {
     token,
     product_id,
@@ -11,7 +10,7 @@ export default async function orders(req, res) {
     type,
     limitPrice,
     base_size,
-  } = query;
+  } = req.query;
   let path = `/api/v3/brokerage/orders/historical/fills?product_id=${asset}-USD`;
   let payload;
   if (req.method === 'GET') {

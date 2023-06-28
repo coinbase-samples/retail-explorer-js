@@ -1,8 +1,7 @@
 import { makeCall } from '../retailClient';
 export default async function listAccount(req, res) {
-  const { query } = req;
 
-  const { token, id } = query;
+  const { token, id } = req.query;
 
   let path = `/v2/accounts/${id}`;
   if (req.method !== 'GET') {
