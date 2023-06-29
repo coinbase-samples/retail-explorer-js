@@ -26,7 +26,7 @@ const OrdersProvider = ({ children }) => {
     try {
       setOrderLoading(true);
       const fetchOrderById = await fetch(
-        `/api/orders/${orderId}?token=${token}`
+        `/api/orders/${orderId}?token=${token}`,
       );
       const data = await fetchOrderById.json();
       setOrder(data);
@@ -46,27 +46,27 @@ const OrdersProvider = ({ children }) => {
     try {
       setFetching(true);
       setOrdersLoading(true);
-      setLoading(true); 
+      setLoading(true);
 
       const orderResponse = await fetch(
-        `/api/orders?token=${token}&asset=${asset}`
+        `/api/orders?token=${token}&asset=${asset}`,
       );
       const data = await orderResponse.json();
       if (data.errors) {
         setOrdersLoading(false);
         setFetching(false);
-        setLoading(false); 
+        setLoading(false);
       } else {
         setUserOrders(data);
         setOrdersLoading(false);
         setFetching(false);
-        setLoading(false); 
+        setLoading(false);
       }
     } catch (error) {
       console.log('error', error);
       setOrdersLoading(false);
       setFetching(false);
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
@@ -77,22 +77,22 @@ const OrdersProvider = ({ children }) => {
     try {
       setFetchingOpenOrders(true);
       setOpenOrdersLoading(true);
-      setLoading(true); 
+      setLoading(true);
 
       const orderResponse = await fetch(
-        `/api/orders/open?token=${token}&product_id=${asset}`
+        `/api/orders/open?token=${token}&product_id=${asset}`,
       );
       const data = await orderResponse.json();
 
       setUserOpenOrders(data);
       setOpenOrdersLoading(false);
       setFetchingOpenOrders(false);
-      setLoading(false); 
+      setLoading(false);
     } catch (error) {
       console.log('error', error);
       setOpenOrdersLoading(false);
       setFetchingOpenOrders(false);
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
@@ -102,7 +102,7 @@ const OrdersProvider = ({ children }) => {
     quote_size,
     side,
     type = 'MARKET',
-    limitPrice = ''
+    limitPrice = '',
   ) => {
     let path;
     try {
@@ -132,10 +132,10 @@ const OrdersProvider = ({ children }) => {
       });
       const data = await createOrderResponse.json();
       setUserOrder(data);
-      setUserOrders((prevOrders) => [...prevOrders, data]);
+      setUserOrders(prevOrders => [...prevOrders, data]);
       setPlacingOrderLoading(false);
       setPlacingOrder(false);
-      setLoading(false); 
+      setLoading(false);
     } catch (error) {
       console.log('error', error);
       setPlacingOrderLoading(false);
@@ -163,7 +163,7 @@ const OrdersProvider = ({ children }) => {
     getOpenOrders,
     openOrdersLoaded,
     setOpenOrdersLoaded,
-    loading, 
+    loading,
   };
 
   return (

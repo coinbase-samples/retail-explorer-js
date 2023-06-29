@@ -27,7 +27,6 @@ function Profile({ token }) {
     getProfile,
   } = useContext(ProfileContext);
 
-
   useEffect(() => {
     if (Object.keys(userProfile).length === 0) {
       getProfile(token);

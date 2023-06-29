@@ -10,9 +10,8 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Method not allowed' });
   }
   try {
- 
- const { code } = req.query;
-   
+    const { code } = req.query;
+
     const targetUrl = `${oauthUrl}/oauth/token`;
     const payload = {
       grant_type: 'authorization_code',

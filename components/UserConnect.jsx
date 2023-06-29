@@ -25,7 +25,7 @@ import {
 } from '@cloudscape-design/components';
 import { redirectUri, clientId, oauthUrl } from '../utils/constants';
 
-export function UserConnect({open, close}) {
+export function UserConnect({ open, close }) {
   const [connectModal, setConnectModal] = useState(false);
   const [selectedScopeOptions, setSelectedScopeOptions] = React.useState([]);
 
@@ -34,7 +34,6 @@ export function UserConnect({open, close}) {
       console.log('window opener ', window.opener);
     }
   }, []);
-
 
   const initiateOauth = () => {
     const scope = selectedScopeOptions.map(scope => scope.value).join(' ');

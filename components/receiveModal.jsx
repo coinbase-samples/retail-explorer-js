@@ -87,7 +87,7 @@ export function ReceiveForm({ token, open, close }) {
               id="addressName"
               name="addressName"
               value={addressName}
-              onChange={(event) => setAddressName(event.detail.value)}
+              onChange={event => setAddressName(event.detail.value)}
             />
           </FormField>
 

@@ -31,7 +31,7 @@ import {
 import { AssetContext } from '../context/assetContext';
 import { OrdersContext } from '../context/ordersContext';
 
-export function TradeForm({token, price, open, close}) {
+export function TradeForm({ token, price, open, close }) {
   const { userOrder, placingOrder, createOrder, setUserOrder } =
     useContext(OrdersContext);
 

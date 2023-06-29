@@ -36,7 +36,7 @@ export function Landing() {
   const router = useRouter();
   const [assetModal, setAssetModal] = useState(false);
   const { query } = router;
-  const { asset } = useContext(AssetContext); 
+  const { asset } = useContext(AssetContext);
   const token = query.token;
   let assetSwitcherComponent = null;
 
@@ -80,12 +80,16 @@ export function Landing() {
                 {
                   label: 'Filled Orders',
                   id: 'filled',
-                  content: asset !== '' ? <Orders token={token} type="filled" /> : null,
+                  content:
+                    asset !== '' ? (
+                      <Orders token={token} type="filled" />
+                    ) : null,
                 },
                 {
                   label: 'Open Orders',
                   id: 'open',
-                  content: asset !== '' ? <Orders token={token} type="open" /> : null,
+                  content:
+                    asset !== '' ? <Orders token={token} type="open" /> : null,
                 },
                 {
                   label: 'Transactions',

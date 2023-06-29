@@ -18,7 +18,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Table, Box } from '@cloudscape-design/components';
 import { TransactionsContext } from '../context/transactionsContext';
 
-function Transactions({token, asset }) {
+function Transactions({ token, asset }) {
   const {
     transactions,
     transactionsLoading: transactionsLoaded,
@@ -29,7 +29,7 @@ function Transactions({token, asset }) {
     if (transactions !== []) {
       getTransactions(token, asset);
     }
-  }, [asset]); 
+  }, [asset]);
 
   return (
     <>

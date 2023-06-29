@@ -27,7 +27,7 @@ import {
 import { OrdersContext } from '../context/ordersContext';
 
 import { AssetContext } from '../context/assetContext';
-function Orders({token, type}) {
+function Orders({ token, type }) {
   const {
     getOrders,
     getOpenOrders,
@@ -42,11 +42,10 @@ function Orders({token, type}) {
   const [detailsModal, setDetailsModal] = useState(false);
   const { asset } = useContext(AssetContext);
 
-
   useEffect(() => {
     if (userOrders !== []) {
       if (type === 'open') {
-      getOpenOrders(token, asset);
+        getOpenOrders(token, asset);
       } else {
         getOrders(token, asset);
       }
@@ -82,7 +81,7 @@ function Orders({token, type}) {
           {
             id: 'order_id',
             header: 'Order Id',
-            cell: (e) => e.order_id,
+            cell: e => e.order_id,
             width: 150,
             minWidth: 150,
             sortingField: 'order_id',
@@ -90,7 +89,7 @@ function Orders({token, type}) {
           {
             id: 'asset',
             header: 'Asset',
-            cell: (e) => e.product_id,
+            cell: e => e.product_id,
             width: 130,
             minWidth: 130,
             sortingField: 'asset',
@@ -98,7 +97,7 @@ function Orders({token, type}) {
           {
             id: 'size',
             header: type === 'filled' ? 'Size' : 'Filled Size',
-            cell: (e) => (type === 'filled' ? e.size : e.filled_size),
+            cell: e => (type === 'filled' ? e.size : e.filled_size),
             width: 135,
             minWidth: 135,
             sortingField: 'size',
@@ -106,7 +105,7 @@ function Orders({token, type}) {
           {
             id: 'created_at',
             header: type === 'Order Date' ? 'Order Date' : 'Created Date',
-            cell: (e) => (type === 'filled' ? e.trade_time : e.created_time),
+            cell: e => (type === 'filled' ? e.trade_time : e.created_time),
             width: 150,
             minWidth: 150,
             sortingField: 'created_at',
@@ -114,7 +113,7 @@ function Orders({token, type}) {
           {
             id: 'details',
             header: 'Details',
-            cell: (e) => (
+            cell: e => (
               <Button onClick={() => openModal(e.order_id)}>Details</Button>
             ),
             width: 150,

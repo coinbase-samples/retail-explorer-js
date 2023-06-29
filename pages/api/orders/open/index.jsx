@@ -8,14 +8,14 @@ export default async function listOpenOrders(req, res) {
   if (req.method !== 'GET') {
     return res.status(400).json({ error: 'Method not allowed' });
   }
-    try {
-      const getOpenOrders = await makeCall(token, path);
-      const response = await getOpenOrders.json();
-      const openOrders = response.orders;
+  try {
+    const getOpenOrders = await makeCall(token, path);
+    const response = await getOpenOrders.json();
+    const openOrders = response.orders;
 
-      return res.status(200).json(openOrders);
-    } catch (error) {
-      console.log('this was the user orders error', error);
-       return res.status(500).json({ error: error.message });
-    }
+    return res.status(200).json(openOrders);
+  } catch (error) {
+    console.log('this was the user orders error', error);
+    return res.status(500).json({ error: error.message });
+  }
 }

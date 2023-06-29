@@ -7,15 +7,14 @@ export default async function ProductById(req, res) {
   if (req.method !== 'GET') {
     return res.status(400).json({ error: 'Method not allowed' });
   }
-    try {
-      const getProductById = await makeCall(token, path);
+  try {
+    const getProductById = await makeCall(token, path);
 
-      const response = await getProductById.json();
+    const response = await getProductById.json();
 
-      return res.status(200).json(response);
-    } catch (error) {
-      console.log('this was the user profile error', error);
-      res.status(500).json({ error: 'Something went wrong' });
-    }
-  } 
-
+    return res.status(200).json(response);
+  } catch (error) {
+    console.log('this was the user profile error', error);
+    res.status(500).json({ error: 'Something went wrong' });
+  }
+}
