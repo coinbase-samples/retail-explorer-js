@@ -85,7 +85,7 @@ export function ReceiveForm({ token, open, close }) {
               id="addressName"
               name="addressName"
               value={addressName}
-              onChange={event => setAddressName(event.detail.value)}
+              onChange={(event) => setAddressName(event.detail.value)}
             />
           </FormField>
 
@@ -93,7 +93,7 @@ export function ReceiveForm({ token, open, close }) {
             <p>
               <strong>Would you like to generate a {asset} address?</strong>
             </p>
-            {Object.keys(address).length !== 0 ? (
+            {address?.address?.length !== 0 ? (
               <div>
                 <p>
                   <b>Use this address to receive {asset}:</b>
