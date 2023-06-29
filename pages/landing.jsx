@@ -51,9 +51,7 @@ export function Landing() {
   };
 
   if (asset === '' || assetModal) {
-    assetSwitcherComponent = (
-      <AssetSwitcher token={token} open={assetModal} close={closeAssetModal} />
-    );
+    assetSwitcherComponent = (<AssetSwitcher token={token} open={assetModal} close={closeAssetModal} />);
   }
 
   return (
