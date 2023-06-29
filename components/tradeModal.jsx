@@ -84,9 +84,17 @@ export function TradeForm({ token, price, open, close }) {
         close();
       } else {
         setOrderError(userOrder?.error_response?.message);
+        
       }
     }
   }, [userOrder.success]);
+
+  useEffect(() => {
+    if (!open) {
+      setOrderError('');
+    }
+  }, [open]);
+
 
   return (
     <Modal
