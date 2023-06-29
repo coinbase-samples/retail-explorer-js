@@ -37,15 +37,15 @@ function AssetInfo({ token }) {
   const [receiveModal, setReceiveModal] = React.useState(false);
   const [sendModal, setSendModal] = React.useState(false);
   const [product, setProduct] = React.useState(0);
+  const [initialFetchCompleted, setInitialFetchCompleted] =
+    React.useState(false);
+
   const closeTradeModal = () => {
     setTradeModal(false);
     setReceiveModal(false);
     setSendModal(false);
   };
-
-  const [initialFetchCompleted, setInitialFetchCompleted] =
-    React.useState(false);
-
+  
   const fetchProduct = async () => {
     const path = `/api/products/${asset}-USD?token=${token}`;
     try {

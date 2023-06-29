@@ -33,15 +33,7 @@ export function AssetSwitcher({ open, close }) {
     value: 'ETH',
   });
 
-  useEffect(() => {
-    if (open) {
-      setSelectedAssetOption({
-        label: 'ETH-USD',
-        value: 'ETH',
-      });
-    }
-  }, [open]);
-
+  
   const closeModal = () => {
     close();
   };
