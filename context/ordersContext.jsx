@@ -26,7 +26,7 @@ const OrdersProvider = ({ children }) => {
     try {
       setOrderLoading(true);
       const fetchOrderById = await fetch(
-        `/api/orders/${orderId}?token=${token}`,
+        `/api/orders/${orderId}?token=${token}`
       );
       const data = await fetchOrderById.json();
       setOrder(data);
@@ -49,7 +49,7 @@ const OrdersProvider = ({ children }) => {
       setLoading(true);
 
       const orderResponse = await fetch(
-        `/api/orders?token=${token}&asset=${asset}`,
+        `/api/orders?token=${token}&asset=${asset}`
       );
       const data = await orderResponse.json();
       if (data.errors) {
@@ -77,7 +77,7 @@ const OrdersProvider = ({ children }) => {
       setLoading(true);
 
       const orderResponse = await fetch(
-        `/api/orders/open?token=${token}&product_id=${asset}`,
+        `/api/orders/open?token=${token}&product_id=${asset}`
       );
       const data = await orderResponse.json();
 
@@ -96,9 +96,8 @@ const OrdersProvider = ({ children }) => {
     quote_size,
     side,
     type = 'MARKET',
-    limitPrice = '',
+    limitPrice = ''
   ) => {
-    let path;
     try {
       const queryParams = {
         token,
@@ -115,7 +114,7 @@ const OrdersProvider = ({ children }) => {
       }
 
       const queryString = new URLSearchParams(queryParams).toString();
-      path = `/api/orders?${queryString}`;
+      const path = `/api/orders?${queryString}`;
 
       setPlacingOrder(true);
       setPlacingOrderLoading(true);
@@ -124,9 +123,10 @@ const OrdersProvider = ({ children }) => {
       const createOrderResponse = await fetch(path, {
         method: 'POST',
       });
+
       const data = await createOrderResponse.json();
       setUserOrder(data);
-      setUserOrders(prevOrders => [...prevOrders, data]);
+      setUserOrders((prevOrders) => [...prevOrders, data]);
       setPlacingOrderLoading(false);
       setPlacingOrder(false);
       setLoading(false);
