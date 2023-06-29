@@ -28,13 +28,13 @@ import {
 
 import { AssetContext } from '../context/assetContext';
 
-export function ReceiveForm({ token }) {
+export function ReceiveForm({ token, open, close }) {
   const { asset } = useContext(AssetContext);
   const [address, setAddress] = useState({});
   const [addressName, setAddressName] = useState('');
 
   const closeModal = () => {
-    props.close();
+    close();
   };
 
   const handleSubmit = async event => {
@@ -57,7 +57,7 @@ export function ReceiveForm({ token }) {
   return (
     <Modal
       onDismiss={closeModal}
-      visible={props.open}
+      visible={open}
       closeAriaLabel="Close modal"
       header="Generate Address"
     >
@@ -87,7 +87,7 @@ export function ReceiveForm({ token }) {
               id="addressName"
               name="addressName"
               value={addressName}
-              onChange={setAddressName(detail.value)}
+              onChange={(event) => setAddressName(event.detail.value)}
             />
           </FormField>
 
