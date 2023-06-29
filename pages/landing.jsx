@@ -65,7 +65,7 @@ export function Landing() {
           <AssetInfo token={token} />
 
           <Container
-            className="profileContentt"
+            className="profileContent"
             loadingText="Fetching Profile..."
           >
             <Profile token={token} />
