@@ -1,11 +1,11 @@
 import { makeCall } from '../../retailClient';
 import { uuid } from 'uuidv4';
 
-export default async function orders(req, res) {
+export default async function sendCrypto(req, res) {
   const { token, to, amount, asset, twoFAcode } = req.query;
   let path = `/v2/accounts/${asset}/transactions`;
   let payload;
-  if (req.method !== 'POST' || req.method !== 'GET') {
+  if (req.method !== 'POST') {
     return res.status(400).json({ error: 'Method not allowed' });
   }
   const body = {
