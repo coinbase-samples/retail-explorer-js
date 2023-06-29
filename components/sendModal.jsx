@@ -43,6 +43,7 @@ export function SendForm({ token, open, close }) {
         const createSendResponse = await fetch(path, {
           method: 'POST',
         });
+      
 
         const response = await createSendResponse.json();
         setTwoFAReceived(true);
