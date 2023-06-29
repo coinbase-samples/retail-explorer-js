@@ -6,7 +6,7 @@ export const makeCall = async (
   path = '/',
   method = 'GET',
   body = '',
-  twoFAcode = '',
+  twoFAcode = ''
 ) => {
   const targetUrl = `${baseUrl}${path}`;
   let headers;
@@ -17,7 +17,6 @@ export const makeCall = async (
     headers = requestHeaders(false, token);
   }
 
-  console.log(headers);
   try {
     const options = {
       method,
