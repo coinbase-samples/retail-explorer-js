@@ -22,7 +22,7 @@ export function SendForm({ token, open, close }) {
     console.log('this is the txn details: ', sendDetails);
   }, [sendDetails]);
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
@@ -30,25 +30,15 @@ export function SendForm({ token, open, close }) {
 
       if (twoFAReceived) {
         path = `${path}&twoFAcode=${twoFAcode}`;
-
-        const createSend2FA = await fetch(path, {
-          method: 'POST',
-        });
-
-        const response = await createSend2FA.json();
-        console.log('2FA sent', response);
-        setTwoFAReceived(false);
-        setSendDetails(response?.data);
-      } else {
-        const createSendResponse = await fetch(path, {
-          method: 'POST',
-        });
-      
-
-        const response = await createSendResponse.json();
-        setTwoFAReceived(true);
-        setSendDetails(response?.data);
       }
+
+      const createSendResponse = await fetch(path, {
+        method: 'POST',
+      });
+
+      const response = await createSendResponse.json();
+      setTwoFAReceived(true);
+      setSendDetails(response?.data);
     } catch (error) {
       console.log('error', error);
     }
