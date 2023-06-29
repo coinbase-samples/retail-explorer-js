@@ -49,15 +49,13 @@ export function Landing() {
     setAssetModal(false);
   };
 
-    if (asset === '' || assetModal) {
-      assetSwitcherComponent = (
-        <AssetSwitcher
-          token={token}
-          open={assetModal}
-          close={closeAssetModal}
-        />
-      );
-    }
+  let assetSwitcherComponent = null;
+
+  if (asset === '' || assetModal) {
+    assetSwitcherComponent = (
+      <AssetSwitcher token={token} open={assetModal} close={closeAssetModal} />
+    );
+  }
 
   return (
     <Layout>
