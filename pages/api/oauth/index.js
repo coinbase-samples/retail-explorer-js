@@ -30,7 +30,8 @@ export default async function handler(req, res) {
 
       return data;
     } catch (error) {
-      console.log('this was the token error', error);
-      res.status(500).json({ error: 'Something went wrong' });
+      console.log('this was the authorization error:', error);
+      res.status(500).json({ error: error.message });
+      return;
     }
   }
