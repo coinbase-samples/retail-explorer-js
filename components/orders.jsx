@@ -59,7 +59,6 @@ function Orders({token, type}) {
 
   const openModal = async id => {
     setDetailsModal(true);
-    setOrderLoading(true);
     await getOrderByID(token, id);
   };
 

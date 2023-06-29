@@ -1,19 +1,3 @@
-/**
- * Copyright 2023 Coinbase Global, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *  http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 import React, { useState, createContext } from 'react';
 
 const defaultState = {};
@@ -33,15 +17,16 @@ const OrdersProvider = ({ children }) => {
   const [placingOrder, setPlacingOrder] = useState(false);
   const [placingOrderLoading, setPlacingOrderLoading] = useState(false);
   const [userOrder, setUserOrder] = useState({});
+  const [loading, setLoading] = useState(false);
+
   const getOrderByID = async (token, orderId) => {
     if (order === {} && orderLoading) {
       return;
     }
-
     try {
       setOrderLoading(true);
       const fetchOrderById = await fetch(
-        `/api/orders/${orderId}?token=${token}`,
+        `/api/orders/${orderId}?token=${token}`
       );
       const data = await fetchOrderById.json();
       setOrder(data);
@@ -54,53 +39,60 @@ const OrdersProvider = ({ children }) => {
   };
 
   const getOrders = async (token, asset) => {
-    if (fetching && userOrders === [] && loading) {
+    if (fetching || loading) {
       return;
     }
 
     try {
       setFetching(true);
       setOrdersLoading(true);
+      setLoading(true); 
 
       const orderResponse = await fetch(
-        `/api/orders?token=${token}&asset=${asset}`,
+        `/api/orders?token=${token}&asset=${asset}`
       );
       const data = await orderResponse.json();
       if (data.errors) {
         setOrdersLoading(false);
         setFetching(false);
+        setLoading(false); 
       } else {
         setUserOrders(data);
         setOrdersLoading(false);
         setFetching(false);
+        setLoading(false); 
       }
     } catch (error) {
       console.log('error', error);
       setOrdersLoading(false);
       setFetching(false);
+      setLoading(false); 
     }
   };
 
   const getOpenOrders = async (token, asset) => {
-    if (fetching && userOpenOrders === [] && openOrdersLoading) {
+    if (fetchingOpenOrders || openOrdersLoading) {
       return;
     }
     try {
       setFetchingOpenOrders(true);
       setOpenOrdersLoading(true);
+      setLoading(true); 
 
       const orderResponse = await fetch(
-        `/api/orders/open?token=${token}&product_id=${asset}`,
+        `/api/orders/open?token=${token}&product_id=${asset}`
       );
       const data = await orderResponse.json();
 
       setUserOpenOrders(data);
-      setOrdersLoading(false);
+      setOpenOrdersLoading(false);
       setFetchingOpenOrders(false);
+      setLoading(false); 
     } catch (error) {
       console.log('error', error);
       setOpenOrdersLoading(false);
       setFetchingOpenOrders(false);
+      setLoading(false); 
     }
   };
 
@@ -110,29 +102,45 @@ const OrdersProvider = ({ children }) => {
     quote_size,
     side,
     type = 'MARKET',
-    limitPrice = '',
+    limitPrice = ''
   ) => {
     let path;
     try {
+      const queryParams = {
+        token,
+        product_id: `${product_id}-USD`,
+        side,
+        type,
+        limitPrice,
+      };
+
       if (side === 'SELL') {
-        path = `/api/orders?token=${token}&product_id=${product_id}-USD&base_size=${quote_size}&side=${side}&type=${type}&limitPrice=${limitPrice}`;
+        queryParams.base_size = quote_size;
       } else {
-        path = `/api/orders?token=${token}&product_id=${product_id}-USD&quote_size=${quote_size}&side=${side}&type=${type}&limitPrice=${limitPrice}`;
+        queryParams.quote_size = quote_size;
       }
 
+      const queryString = new URLSearchParams(queryParams).toString();
+      path = `/api/orders?${queryString}`;
+
       setPlacingOrder(true);
+      setPlacingOrderLoading(true);
+      setLoading(true);
+
       const createOrderResponse = await fetch(path, {
         method: 'POST',
       });
       const data = await createOrderResponse.json();
       setUserOrder(data);
-      setUserOrders(prevOrders => [...prevOrders, data]);
+      setUserOrders((prevOrders) => [...prevOrders, data]);
       setPlacingOrderLoading(false);
       setPlacingOrder(false);
+      setLoading(false); 
     } catch (error) {
       console.log('error', error);
       setPlacingOrderLoading(false);
       setPlacingOrder(false);
+      setLoading(false);
     }
   };
 
@@ -155,6 +163,7 @@ const OrdersProvider = ({ children }) => {
     getOpenOrders,
     openOrdersLoaded,
     setOpenOrdersLoaded,
+    loading, 
   };
 
   return (

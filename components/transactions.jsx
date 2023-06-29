@@ -27,7 +27,6 @@ function Transactions({token, asset }) {
 
   useEffect(() => {
     if (transactions !== []) {
-      console.log('calling transactions context', asset);
       getTransactions(token, asset);
     }
   }, [asset]); 
