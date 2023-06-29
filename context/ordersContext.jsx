@@ -64,9 +64,6 @@ const OrdersProvider = ({ children }) => {
       }
     } catch (error) {
       console.log('error', error);
-      setOrdersLoading(false);
-      setFetching(false);
-      setLoading(false);
     }
   };
 
@@ -90,9 +87,6 @@ const OrdersProvider = ({ children }) => {
       setLoading(false);
     } catch (error) {
       console.log('error', error);
-      setOpenOrdersLoading(false);
-      setFetchingOpenOrders(false);
-      setLoading(false);
     }
   };
 
