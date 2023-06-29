@@ -33,9 +33,7 @@ export function ReceiveForm({ token, open, close }) {
   const [address, setAddress] = useState({});
   const [addressName, setAddressName] = useState('');
 
-  const closeModal = () => {
-    close();
-  };
+  
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -50,13 +48,13 @@ export function ReceiveForm({ token, open, close }) {
     } catch (error) {
       console.log('error', error);
 
-      closeModal();
+      close();
     }
   };
 
   return (
     <Modal
-      onDismiss={closeModal}
+      onDismiss={close}
       visible={open}
       closeAriaLabel="Close modal"
       header="Generate Address"
@@ -67,7 +65,7 @@ export function ReceiveForm({ token, open, close }) {
           actions={
             <Box float="right">
               <SpaceBetween direction="horizontal" size="xs">
-                <Button variant="link" onClick={closeModal}>
+                <Button variant="link" onClick={close}>
                   Close
                 </Button>
                 <SpaceBetween id="formLabel" direction="horizontal" size="xs">

@@ -15,20 +15,19 @@
  */
 
 import * as React from 'react';
+import { HelpPanel, ColumnLayout } from '@cloudscape-design/components';
 import { useContext, useEffect } from 'react';
 import { ProfileContext } from '../context/profileContext';
-import { AssetContext } from '../context/assetContext';
-import { HelpPanel, ColumnLayout } from '@cloudscape-design/components';
 
 function Profile({ token }) {
   const {
     userProfile,
-    profileLoading: profileLoaded,
+    profileLoading,
     getProfile,
   } = useContext(ProfileContext);
 
   useEffect(() => {
-    if (Object.keys(userProfile).length === 0) {
+    if (!userProfile?.name) {
       getProfile(token);
     }
   }, []);
@@ -36,7 +35,7 @@ function Profile({ token }) {
   return (
     <>
       <HelpPanel
-        loading={profileLoaded}
+        loading={profileLoading}
         loadingText="Loading your profile..."
         header={<h3>Profile Info</h3>}
       >

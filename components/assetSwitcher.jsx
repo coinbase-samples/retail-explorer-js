@@ -33,24 +33,21 @@ export function AssetSwitcher({ open, close }) {
     value: 'ETH',
   });
 
-  const closeModal = () => {
-    close();
-  };
 
   const initiateAssetSwitch = () => {
     setAsset(selectedAssetOption.value);
-    closeModal();
+    close();
   };
 
   return (
     <Modal
-      onDismiss={closeModal}
+      onDismiss={close}
       visible={open}
       closeAriaLabel="Close modal"
       footer={
         <Box float="right">
           <SpaceBetween direction="horizontal" size="xs">
-            <Button variant="link" onClick={closeModal}>
+            <Button variant="link" onClick={close}>
               Cancel
             </Button>
             <Button variant="primary" onClick={initiateAssetSwitch}>

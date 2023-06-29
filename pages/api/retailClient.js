@@ -1,4 +1,6 @@
 import { requestHeaders } from '../../utils/headers';
+import { baseUrl } from '../../utils/constants';
+
 export const makeCall = async (
   token,
   path = '/',
@@ -6,7 +8,6 @@ export const makeCall = async (
   body = '',
   twoFAcode = '',
 ) => {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const targetUrl = `${baseUrl}${path}`;
   let headers;
 

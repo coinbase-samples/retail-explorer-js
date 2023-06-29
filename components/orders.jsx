@@ -62,14 +62,6 @@ function Orders({ token, type }) {
     await getOrderByID(token, id);
   };
 
-  const closeModal = () => {
-    setDetailsModal(false);
-  };
-
-  const cancelOrder = () => {
-    alert('Order Cancelled');
-  };
-
   return (
     <>
       <Table
@@ -132,13 +124,13 @@ function Orders({ token, type }) {
       />
       {detailsModal && ( // corrected conditional rendering syntax
         <Modal
-          onDismiss={closeModal}
+          onDismiss={close}
           visible={detailsModal}
           closeAriaLabel="Close modal"
           footer={
             <Box float="right">
               <SpaceBetween direction="horizontal" size="xs">
-                <Button variant="link" onClick={closeModal}>
+                <Button variant="link" onClick={close}>
                   Close
                 </Button>
               </SpaceBetween>

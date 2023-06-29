@@ -36,20 +36,17 @@ export function UserConnect({ open, close }) {
 
     window.location.href = authorizeUrl;
   };
-  const closeModal = () => {
-    setConnectModal(false);
-    close();
-  };
+ 
 
   return !connectModal ? (
     <Modal
-      onDismiss={closeModal}
+      onDismiss={close}
       visible={open}
       closeAriaLabel="Close modal"
       footer={
         <Box float="right">
           <SpaceBetween direction="horizontal" size="xs">
-            <Button variant="link" onClick={closeModal}>
+            <Button variant="link" onClick={close}>
               Cancel
             </Button>
             <Button variant="primary" onClick={initiateOauth}>

@@ -52,9 +52,7 @@ export function TradeForm({ token, price, open, close }) {
     value: 'BUY',
   });
 
-  const closeModal = () => {
-    close();
-  };
+  
 
   const handleQuoteSize = quote => {
     const decimalRegex = /^\d+(\.\d+)?$/;
@@ -100,7 +98,7 @@ export function TradeForm({ token, price, open, close }) {
     } catch (error) {
       console.log('error', error);
       alert(error.message);
-      closeModal();
+      close();
     }
   };
 
@@ -111,7 +109,7 @@ export function TradeForm({ token, price, open, close }) {
           `Your order success is ${userOrder?.success} and your Order Id is ${userOrder.order_id}.`,
         );
         setUserOrder({});
-        closeModal();
+        close();
       } else {
         setOrderError(userOrder?.error_response?.message);
       }
@@ -120,7 +118,7 @@ export function TradeForm({ token, price, open, close }) {
 
   return (
     <Modal
-      onDismiss={closeModal}
+      onDismiss={close}
       visible={open}
       closeAriaLabel="Close modal"
       header="Place order"
@@ -132,7 +130,7 @@ export function TradeForm({ token, price, open, close }) {
           actions={
             <Box float="right">
               <SpaceBetween direction="horizontal" size="xs">
-                <Button variant="link" onClick={closeModal}>
+                <Button variant="link" onClick={close}>
                   Cancel
                 </Button>
                 <SpaceBetween id="formLabel" direction="horizontal" size="xs">

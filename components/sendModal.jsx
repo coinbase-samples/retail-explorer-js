@@ -35,9 +35,6 @@ export function SendForm({ token, open, close }) {
   const [twoFAReceived, setTwoFAReceived] = useState(false);
   const [twoFAcode, setTwoFAcode] = useState('');
 
-  const closeModal = () => {
-    close();
-  };
 
   useEffect(() => {
     console.log('this is the txn details: ', sendDetails);
@@ -48,7 +45,7 @@ export function SendForm({ token, open, close }) {
 
     try {
       if (twoFAReceived) {
-        const path = `/api/transactions/send?token=${token}&to=${to}&amount=${amount}&asset=${asset}&twoFAcode=${twoFAcode}`;
+        let path = `/api/transactions/send?token=${token}&to=${to}&amount=${amount}&asset=${asset}`;
         const createSendResponse = await fetch(path, {
           method: 'POST',
         });
@@ -56,7 +53,7 @@ export function SendForm({ token, open, close }) {
         setTwoFAReceived(false);
         setSendDetails(response?.data);
       } else {
-        const path = `/api/transactions/send?token=${token}&to=${to}&amount=${amount}&asset=${asset}`;
+         path = `${path}&twoFAcode=${twoFAcode}`;
         const createSend2FA = await fetch(path, {
           method: 'POST',
         });
@@ -96,7 +93,7 @@ export function SendForm({ token, open, close }) {
   };
   return (
     <Modal
-      onDismiss={closeModal}
+      onDismiss={close}
       visible={open}
       closeAriaLabel="Close modal"
       header="Send Crypto"
@@ -107,7 +104,7 @@ export function SendForm({ token, open, close }) {
           actions={
             <Box float="right">
               <SpaceBetween direction="horizontal" size="xs">
-                <Button variant="link" onClick={closeModal}>
+                <Button variant="link" onClick={close}>
                   Close
                 </Button>
                 <SpaceBetween id="formLabel" direction="horizontal" size="xs">
