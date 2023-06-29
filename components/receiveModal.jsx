@@ -69,7 +69,7 @@ export function ReceiveForm({ token, open, close }) {
                   Close
                 </Button>
                 <SpaceBetween id="formLabel" direction="horizontal" size="xs">
-                  {Object.keys(address).length === 0 ? (
+                  {address?.length !== 0 ? (
                     <Button id="submit" variant="primary">
                       Generate Address
                     </Button>
@@ -93,14 +93,14 @@ export function ReceiveForm({ token, open, close }) {
             <p>
               <strong>Would you like to generate a {asset} address?</strong>
             </p>
-            {address?.address?.length !== 0 ? (
+            {address?.address && (
               <div>
                 <p>
                   <b>Use this address to receive {asset}:</b>
                 </p>
                 <p>{address.address}</p>
               </div>
-            ) : null}
+            )}
           </div>
         </Form>
       </form>
