@@ -39,7 +39,7 @@ function Orders({ token, type }) {
     orderLoading,
     setOrderLoading,
   } = useContext(OrdersContext);
-  
+
   const { asset } = useContext(AssetContext);
   const [detailsModal, setDetailsModal] = useState(false);
 

@@ -33,7 +33,6 @@ export function AssetSwitcher({ open, close }) {
     value: 'ETH',
   });
 
-  
   const closeModal = () => {
     close();
   };

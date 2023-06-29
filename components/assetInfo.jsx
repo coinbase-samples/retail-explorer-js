@@ -45,7 +45,7 @@ function AssetInfo({ token }) {
     setReceiveModal(false);
     setSendModal(false);
   };
-  
+
   const fetchProduct = async () => {
     const path = `/api/products/${asset}-USD?token=${token}`;
     try {
