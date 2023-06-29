@@ -34,9 +34,9 @@ import { AssetContext } from '../context/assetContext';
 
 export function Landing() {
   const router = useRouter();
+  const { asset } = useContext(AssetContext);
   const [assetModal, setAssetModal] = useState(false);
   const { query } = router;
-  const { asset } = useContext(AssetContext);
   const token = query.token;
   let assetSwitcherComponent = null;
 
