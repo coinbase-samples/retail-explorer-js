@@ -30,6 +30,8 @@ export default async function orders(req, res) {
     }
   } else {
     let payload;
+    const clientOrderId = Math.random().toString();
+
     let body = {
       clientOrderId,
       product_id,
@@ -40,8 +42,10 @@ export default async function orders(req, res) {
         },
       },
     };
+
+    payload = JSON.stringify(body);
+
     try {
-      const clientOrderId = Math.random().toString();
 
       if (type === 'LIMIT') {
         body = {
