@@ -46,7 +46,6 @@ const OrdersProvider = ({ children }) => {
     try {
       setFetching(true);
       setOrdersLoading(true);
-      setLoading(true);
 
       const orderResponse = await fetch(
         `/api/orders?token=${token}&asset=${asset}`
@@ -54,16 +53,14 @@ const OrdersProvider = ({ children }) => {
       const data = await orderResponse.json();
       if (data.errors) {
         setOrdersLoading(false);
-        setFetching(false);
-        setLoading(false);
       } else {
         setUserOrders(data);
         setOrdersLoading(false);
-        setFetching(false);
-        setLoading(false);
       }
     } catch (error) {
       console.log('error', error);
+    } finally {
+      setFetching(false);
     }
   };
 
@@ -71,10 +68,10 @@ const OrdersProvider = ({ children }) => {
     if (fetchingOpenOrders || openOrdersLoading) {
       return;
     }
+
     try {
       setFetchingOpenOrders(true);
       setOpenOrdersLoading(true);
-      setLoading(true);
 
       const orderResponse = await fetch(
         `/api/orders/open?token=${token}&product_id=${asset}`
@@ -82,11 +79,11 @@ const OrdersProvider = ({ children }) => {
       const data = await orderResponse.json();
 
       setUserOpenOrders(data);
-      setOpenOrdersLoading(false);
-      setFetchingOpenOrders(false);
-      setLoading(false);
     } catch (error) {
       console.log('error', error);
+    } finally {
+      setOpenOrdersLoading(false);
+      setFetchingOpenOrders(false);
     }
   };
 
