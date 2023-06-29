@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { SelectScopes } from './selectScopes';
 import { generateRandomString } from '../utils/randomString';
 import {
@@ -28,12 +28,6 @@ import { redirectUri, clientId, oauthUrl } from '../utils/constants';
 export function UserConnect({ open, close }) {
   const [connectModal, setConnectModal] = useState(false);
   const [selectedScopeOptions, setSelectedScopeOptions] = React.useState([]);
-
-  useEffect(() => {
-    if (window.opener) {
-      console.log('window opener ', window.opener);
-    }
-  }, []);
 
   const initiateOauth = () => {
     const scope = selectedScopeOptions.map(scope => scope.value).join(' ');
