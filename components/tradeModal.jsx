@@ -52,7 +52,6 @@ export function TradeForm({ token, price, open, close }) {
     value: 'BUY',
   });
 
-  
   const handleSubmit = async event => {
     event.preventDefault();
     try {
@@ -84,7 +83,6 @@ export function TradeForm({ token, price, open, close }) {
         close();
       } else {
         setOrderError(userOrder?.error_response?.message);
-        
       }
     }
   }, [userOrder.success]);
@@ -94,7 +92,6 @@ export function TradeForm({ token, price, open, close }) {
       setOrderError('');
     }
   }, [open]);
-
 
   return (
     <Modal

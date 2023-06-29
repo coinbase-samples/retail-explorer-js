@@ -22,7 +22,7 @@ export function SendForm({ token, open, close }) {
     console.log('this is the txn details: ', sendDetails);
   }, [sendDetails]);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async event => {
     event.preventDefault();
 
     try {

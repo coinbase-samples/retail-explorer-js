@@ -64,7 +64,7 @@ function Orders({ token, type }) {
 
   const closeModal = () => {
     setDetailsModal(false);
-  }
+  };
 
   return (
     <>
@@ -126,7 +126,7 @@ function Orders({ token, type }) {
           </Box>
         }
       />
-      {detailsModal && ( 
+      {detailsModal && (
         <Modal
           onDismiss={closeModal}
           visible={detailsModal}

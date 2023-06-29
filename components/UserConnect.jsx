@@ -36,7 +36,6 @@ export function UserConnect({ open, close }) {
 
     window.location.href = authorizeUrl;
   };
- 
 
   return !connectModal ? (
     <Modal

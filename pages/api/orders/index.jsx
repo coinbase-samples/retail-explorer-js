@@ -29,12 +29,22 @@ export default async function orders(req, res) {
       res.status(500).json({ error: 'Something went wrong' });
     }
   } else {
+    let payload;
+    let body = {
+      clientOrderId,
+      product_id,
+      side,
+      order_configuration: {
+        market_market_ioc: {
+          ...(side === 'BUY' ? { quote_size } : { base_size }),
+        },
+      },
+    };
     try {
       const clientOrderId = Math.random().toString();
-      let payload;
 
       if (type === 'LIMIT') {
-        const body = {
+        body = {
           clientOrderId,
           product_id,
           side,
@@ -42,18 +52,6 @@ export default async function orders(req, res) {
             limit_limit_gtc: {
               base_size: quote_size,
               limit_price: limitPrice,
-            },
-          },
-        };
-        payload = JSON.stringify(body);
-      } else {
-        const body = {
-          clientOrderId,
-          product_id,
-          side,
-          order_configuration: {
-            market_market_ioc: {
-              ...(side === 'BUY' ? { quote_size } : { base_size }),
             },
           },
         };

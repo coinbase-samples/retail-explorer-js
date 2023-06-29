@@ -20,11 +20,8 @@ import { useContext, useEffect } from 'react';
 import { ProfileContext } from '../context/profileContext';
 
 function Profile({ token }) {
-  const {
-    userProfile,
-    profileLoading,
-    getProfile,
-  } = useContext(ProfileContext);
+  const { userProfile, profileLoading, getProfile } =
+    useContext(ProfileContext);
 
   useEffect(() => {
     if (!userProfile?.name) {
