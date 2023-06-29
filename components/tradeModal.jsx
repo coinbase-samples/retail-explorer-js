@@ -72,15 +72,7 @@ export function TradeForm({ token, price, open, close }) {
     }
   };
 
-  const handlePrice = price => {
-    const decimalRegex = /^\d+(\.\d+)?$/;
-    if (decimalRegex.test(price)) {
-      setLimitPrice(price);
-    } else {
-      setError('Please enter a valid number');
-    }
-  };
-
+  
   const handleSubmit = async event => {
     event.preventDefault();
     try {
@@ -174,7 +166,9 @@ export function TradeForm({ token, price, open, close }) {
             <FormField label="Limit Price" id="lPrice" errorText={error}>
               <Input
                 id="price"
-                onChange={({ detail }) => handlePrice(detail.value)}
+                type="number"
+                step="0.01"
+                onChange={({ detail }) => setLimitPrice(detail.value)}
                 value={limitPrice}
               />
             </FormField>
