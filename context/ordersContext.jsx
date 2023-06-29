@@ -102,13 +102,8 @@ const OrdersProvider = ({ children }) => {
         side,
         type,
         limitPrice,
+        ...(side === 'SELL' ? { base_size: quote_size } : { quote_size }),
       };
-
-      if (side === 'SELL') {
-        queryParams.base_size = quote_size;
-      } else {
-        queryParams.quote_size = quote_size;
-      }
 
       const queryString = new URLSearchParams(queryParams).toString();
       const path = `/api/orders?${queryString}`;
