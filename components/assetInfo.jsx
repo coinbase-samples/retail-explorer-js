@@ -1,19 +1,3 @@
-/**
- * Copyright 2023 Coinbase Global, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *  http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 import * as React from 'react';
 import { useContext, useEffect } from 'react';
 import { AssetContext } from '../context/assetContext';
@@ -33,18 +17,10 @@ import {
 
 function AssetInfo({ token }) {
   const { userAsset, assetLoading, getAsset, asset } = useContext(AssetContext);
-  const [tradeModal, setTradeModal] = React.useState(false);
-  const [receiveModal, setReceiveModal] = React.useState(false);
-  const [sendModal, setSendModal] = React.useState(false);
+  const [activeModal, setActiveModal] = React.useState(null);
   const [product, setProduct] = React.useState(0);
   const [initialFetchCompleted, setInitialFetchCompleted] =
     React.useState(false);
-
-  const closeTradeModal = () => {
-    setTradeModal(false);
-    setReceiveModal(false);
-    setSendModal(false);
-  };
 
   const fetchProduct = async () => {
     const path = `/api/products/${asset}-USD?token=${token}`;
@@ -66,16 +42,12 @@ function AssetInfo({ token }) {
     }
   }, [asset]);
 
-  const handleSend = () => {
-    setSendModal(true);
+  const handleModalOpen = (modal) => {
+    setActiveModal(modal);
   };
 
-  const handleReceive = () => {
-    setReceiveModal(true);
-  };
-
-  const handleTrade = () => {
-    setTradeModal(true);
+  const handleModalClose = () => {
+    setActiveModal(null);
   };
 
   return (
@@ -86,9 +58,11 @@ function AssetInfo({ token }) {
           <Header
             actions={
               <SpaceBetween direction="horizontal" size="xs">
-                <Button onClick={handleTrade}>Trade</Button>
-                <Button onClick={handleSend}>Send</Button>
-                <Button onClick={handleReceive}>Receive</Button>
+                <Button onClick={() => handleModalOpen('trade')}>Trade</Button>
+                <Button onClick={() => handleModalOpen('send')}>Send</Button>
+                <Button onClick={() => handleModalOpen('receive')}>
+                  Receive
+                </Button>
               </SpaceBetween>
             }
           >
@@ -112,26 +86,20 @@ function AssetInfo({ token }) {
           {userAsset?.native_balance?.amount}
         </ColumnLayout>
       </HelpPanel>
-      {tradeModal ? (
+      {activeModal === 'trade' && (
         <TradeForm
           token={token}
           price={product.price}
-          open={tradeModal}
-          close={closeTradeModal}
+          open={true}
+          close={handleModalClose}
         />
-      ) : null}
-
-      {receiveModal ? (
-        <ReceiveForm
-          token={token}
-          open={receiveModal}
-          close={closeTradeModal}
-        />
-      ) : null}
-
-      {sendModal ? (
-        <SendForm token={token} open={sendModal} close={closeTradeModal} />
-      ) : null}
+      )}
+      {activeModal === 'send' && (
+        <SendForm token={token} open={true} close={handleModalClose} />
+      )}
+      {activeModal === 'receive' && (
+        <ReceiveForm token={token} open={true} close={handleModalClose} />
+      )}
     </Container>
   );
 }
