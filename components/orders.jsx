@@ -39,8 +39,9 @@ function Orders({ token, type }) {
     orderLoading,
     setOrderLoading,
   } = useContext(OrdersContext);
-  const [detailsModal, setDetailsModal] = useState(false);
+  
   const { asset } = useContext(AssetContext);
+  const [detailsModal, setDetailsModal] = useState(false);
 
   useEffect(() => {
     if (userOrders !== []) {
