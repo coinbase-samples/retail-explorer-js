@@ -21,7 +21,7 @@ import {
   Button,
   Tabs,
 } from '@cloudscape-design/components';
-import { useContext, useEffect, useState } from 'react'; // Import useState
+import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../components/Layouts';
 import { gridDefinition } from '../utils/grids';
@@ -66,7 +66,6 @@ export function Landing() {
 
           <Container
             className="profileContentt"
-            // loading={balanceLoaded}
             loadingText="Fetching Profile..."
           >
             <Profile token={token} />
