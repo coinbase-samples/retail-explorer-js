@@ -45,9 +45,7 @@ function Orders({token, type}) {
 
   useEffect(() => {
     if (userOrders !== []) {
-      console.log('calling orders context', type);
       if (type === 'open') {
-        console.log('calling open orders')
       getOpenOrders(token, asset);
       } else {
         getOrders(token, asset);

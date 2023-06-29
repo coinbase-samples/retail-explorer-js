@@ -54,7 +54,6 @@ const OrdersProvider = ({ children }) => {
   };
 
   const getOrders = async (token, asset) => {
-    console.log('asset from context', asset);
     if (fetching && userOrders === [] && loading) {
       return;
     }
@@ -126,7 +125,6 @@ const OrdersProvider = ({ children }) => {
         method: 'POST',
       });
       const data = await createOrderResponse.json();
-      console.log('context ', data);
       setUserOrder(data);
       setUserOrders(prevOrders => [...prevOrders, data]);
       setPlacingOrderLoading(false);
