@@ -6,7 +6,7 @@ export default async function listOpenOrders(req, res) {
   let path = `/api/v3/brokerage/orders/historical/batch?order_status=OPEN&product_id=${product_id}-USD`;
 
   if (req.method !== 'GET') {
-    return res.status(400).json({ error: 'Method not allowed' });
+    return res.status(405).json({ error: 'Method not allowed' });
   }
   try {
     const getOpenOrders = await makeCall(token, path);

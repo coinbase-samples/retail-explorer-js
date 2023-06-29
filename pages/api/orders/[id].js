@@ -5,7 +5,7 @@ export default async function OrderById(req, res) {
   let path = `/api/v3/brokerage/orders/historical/${id}`;
 
   if (req.method !== 'GET') {
-    return res.status(400).json({ error: 'Method not allowed' });
+    return res.status(405).json({ error: 'Method not allowed' });
   } else {
     try {
       const getOrderById = await makeCall(token, path);

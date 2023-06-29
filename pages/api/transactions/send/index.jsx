@@ -6,7 +6,7 @@ export default async function sendCrypto(req, res) {
   let path = `/v2/accounts/${asset}/transactions`;
   let payload;
   if (req.method !== 'POST') {
-    return res.status(400).json({ error: 'Method not allowed' });
+    return res.status(405).json({ error: 'Method not allowed' });
   }
   const body = {
     type: 'send',
@@ -23,7 +23,7 @@ export default async function sendCrypto(req, res) {
       path,
       'POST',
       payload,
-      twoFAcode,
+      twoFAcode
     );
 
     const response = await initiateSend.json();

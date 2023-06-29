@@ -4,7 +4,7 @@ export default async function listAccount(req, res) {
 
   let path = `/v2/accounts/${id}`;
   if (req.method !== 'GET') {
-    res.status(400).json({ error: 'Method not allowed' });
+    res.status(405).json({ error: 'Method not allowed' });
     return;
   }
 
