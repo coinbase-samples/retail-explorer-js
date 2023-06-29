@@ -9,13 +9,10 @@ export const makeCall = async (
   twoFAcode = ''
 ) => {
   const targetUrl = `${baseUrl}${path}`;
-  let headers;
-
-  if (twoFAcode !== '') {
-    headers = requestHeaders(true, token, twoFAcode);
-  } else {
-    headers = requestHeaders(false, token);
-  }
+  const headers =
+    twoFAcode !== ''
+      ? requestHeaders(true, token, twoFAcode)
+      : requestHeaders(false, token);
 
   try {
     const options = {
@@ -29,7 +26,6 @@ export const makeCall = async (
     }
 
     const callRetail = await fetch(targetUrl, options);
-    console.log('this is api call response', callRetail);
 
     return callRetail;
   } catch (e) {
