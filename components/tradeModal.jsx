@@ -53,26 +53,6 @@ export function TradeForm({ token, price, open, close }) {
   });
 
   
-
-  const handleQuoteSize = quote => {
-    const decimalRegex = /^\d+(\.\d+)?$/;
-    if (decimalRegex.test(quote)) {
-      setQuoteSize(quote);
-      setError('');
-    } else {
-      setError('Please enter a valid number');
-    }
-  };
-
-  const handleBaseCurrency = bsc => {
-    if (!isNaN(+bsc)) {
-      setBaseCurrency(bsc);
-    } else {
-      setError('Please enter an integer value');
-    }
-  };
-
-  
   const handleSubmit = async event => {
     event.preventDefault();
     try {
@@ -178,7 +158,9 @@ export function TradeForm({ token, price, open, close }) {
             <FormField label="quote size" id="quote" errorText={error}>
               <Input
                 id="inputQuouteSize"
-                onChange={({ detail }) => handleQuoteSize(detail.value)}
+                type="number"
+                step="0.01"
+                onChange={({ detail }) => setQuoteSize(detail.value)}
                 value={quoteSize}
               />
             </FormField>
@@ -190,7 +172,9 @@ export function TradeForm({ token, price, open, close }) {
             >
               <Input
                 id="baseCurrency"
-                onChange={({ detail }) => handleBaseCurrency(detail.value)}
+                type="number"
+                step="0.01"
+                onChange={({ detail }) => setBaseCurrency(detail.value)}
                 value={baseCurrency}
               />
             </FormField>
