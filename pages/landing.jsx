@@ -38,7 +38,6 @@ export function Landing() {
   const [assetModal, setAssetModal] = useState(false);
   const { query } = router;
   const token = query.token;
-  let assetSwitcherComponent = null;
 
   useEffect(() => {
     if (asset === '') {
@@ -50,9 +49,15 @@ export function Landing() {
     setAssetModal(false);
   };
 
-  if (asset === '' || assetModal) {
-    assetSwitcherComponent = (<AssetSwitcher token={token} open={assetModal} close={closeAssetModal} />);
-  }
+    if (asset === '' || assetModal) {
+      assetSwitcherComponent = (
+        <AssetSwitcher
+          token={token}
+          open={assetModal}
+          close={closeAssetModal}
+        />
+      );
+    }
 
   return (
     <Layout>
