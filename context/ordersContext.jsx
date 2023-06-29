@@ -86,7 +86,6 @@ const OrdersProvider = ({ children }) => {
     if (fetching && userOpenOrders === [] && openOrdersLoading) {
       return;
     }
-
     try {
       setFetchingOpenOrders(true);
       setOpenOrdersLoading(true);

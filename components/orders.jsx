@@ -27,10 +27,12 @@ import {
 import { OrdersContext } from '../context/ordersContext';
 
 import { AssetContext } from '../context/assetContext';
-function Orders({token}) {
+function Orders({token, type}) {
   const {
     getOrders,
+    getOpenOrders,
     userOrders,
+    userOpenOrders,
     ordersLoading,
     order,
     getOrderByID,
@@ -43,7 +45,13 @@ function Orders({token}) {
 
   useEffect(() => {
     if (userOrders !== []) {
-      getOrders(token, asset);
+      console.log('calling orders context', type);
+      if (type === 'open') {
+        console.log('calling open orders')
+      getOpenOrders(token, asset);
+      } else {
+        getOrders(token, asset);
+      }
     }
   }, [asset]);
 
@@ -77,7 +85,7 @@ function Orders({token}) {
           {
             id: 'order_id',
             header: 'Order Id',
-            cell: e => e.order_id,
+            cell: (e) => e.order_id,
             width: 150,
             minWidth: 150,
             sortingField: 'order_id',
@@ -85,23 +93,23 @@ function Orders({token}) {
           {
             id: 'asset',
             header: 'Asset',
-            cell: e => e.product_id,
+            cell: (e) => e.product_id,
             width: 130,
             minWidth: 130,
             sortingField: 'asset',
           },
           {
             id: 'size',
-            header: 'Size',
-            cell: e => e.size,
+            header: type === 'filled' ? 'Size' : 'Filled Size',
+            cell: (e) => (type === 'filled' ? e.size : e.filled_size),
             width: 135,
             minWidth: 135,
             sortingField: 'size',
           },
           {
             id: 'created_at',
-            header: 'Order Date',
-            cell: e => e.trade_time,
+            header: type === 'Order Date' ? 'Order Date' : 'Created Date',
+            cell: (e) => (type === 'filled' ? e.trade_time : e.created_time),
             width: 150,
             minWidth: 150,
             sortingField: 'created_at',
@@ -109,14 +117,14 @@ function Orders({token}) {
           {
             id: 'details',
             header: 'Details',
-            cell: e => (
+            cell: (e) => (
               <Button onClick={() => openModal(e.order_id)}>Details</Button>
             ),
             width: 150,
             minWidth: 150,
           },
         ]}
-        items={userOrders}
+        items={type === 'filled' ? userOrders : userOpenOrders}
         loading={ordersLoading}
         loadingText="Loading Orders..."
         empty={

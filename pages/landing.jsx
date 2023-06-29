@@ -22,13 +22,11 @@ import {
   Tabs,
 } from '@cloudscape-design/components';
 import { useContext, useEffect, useState } from 'react'; // Import useState
-import { UserContext } from '../context/UserContext';
 import { useRouter } from 'next/router';
 import Layout from '../components/Layouts';
 import { gridDefinition } from '../utils/grids';
 import Profile from '../components/profile';
 import Orders from '../components/orders';
-import OpenOrders from '../components/openOrders';
 import AssetInfo from '../components/assetInfo';
 import Transactions from '../components/transactions';
 import { AssetSwitcher } from '../components/assetSwitcher';
@@ -38,7 +36,7 @@ export function Landing() {
   const router = useRouter();
   const [assetModal, setAssetModal] = useState(false);
   const { query } = router;
-  const { asset } = useContext(AssetContext); // Retrieve asset from AssetContext
+  const { asset } = useContext(AssetContext); 
   const token = query.token;
   let assetSwitcherComponent = null;
 
@@ -82,12 +80,12 @@ export function Landing() {
                 {
                   label: 'Filled Orders',
                   id: 'filled',
-                  content: asset !== '' ? <Orders token={token} /> : null,
+                  content: asset !== '' ? <Orders token={token} type="filled" /> : null,
                 },
                 {
                   label: 'Open Orders',
                   id: 'open',
-                  content: asset !== '' ? <OpenOrders token={token} /> : null,
+                  content: asset !== '' ? <Orders token={token} type="open" /> : null,
                 },
                 {
                   label: 'Transactions',
