@@ -30,7 +30,7 @@ export default function Header() {
     router.push('/');
   };
 
-  const name = userProfile?.name;
+  const name = userProfile?.name || '';
 
   const signout = async () => {
     try {
@@ -69,7 +69,7 @@ export default function Header() {
       utilities={[
         {
           type: 'menu-dropdown',
-          text: name ? userProfile?.name : '',
+          text: name,
           iconName: 'user-profile',
           iconAlign: 'right',
           onItemClick: name ? onMenuClick : null,
