@@ -59,6 +59,7 @@ const OrdersProvider = ({ children }) => {
       }
     } catch (error) {
       console.log('error', error);
+      alert('Error fetching orders');
     } finally {
       setFetching(false);
     }
