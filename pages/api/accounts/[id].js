@@ -1,8 +1,8 @@
 import { makeCall } from '../retailClient';
 export default async function listAccount(req, res) {
   const { token, id } = req.query;
-
   const path = `/v2/accounts/${id}`;
+
   if (req.method !== 'GET') {
     res.status(405).json({ error: 'Method not allowed' });
     return;
