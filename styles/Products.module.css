@@ -1,0 +1,78 @@
+.image img {
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+}
+
+.image div {
+  margin: 10px;
+  overflow: auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+}
+
+.container div {
+  overflow: hidden;
+}
+
+.container h3 p {
+  color: #033160;
+  padding: 10px;
+}
+
+.icon {
+  display: contents;
+  margin: 5px;
+}
+
+.square {
+  width: 200px;
+  height: 300px;
+}
+
+.description {
+  padding: 20px;
+  width: 50%;
+  float: left;
+}
+
+.description img {
+  float: left;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.expandable {
+  font-size: large;
+}
+
+.expandable p {
+  font-weight: bold;
+  float: center;
+  font-size: x-large;
+}
+
+.expandable img {
+  padding: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.expandable div {
+  padding: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: fit-content;
+  width: fit-content;
+}
+
+.expandableImage {
+  text-align: center;
+}
