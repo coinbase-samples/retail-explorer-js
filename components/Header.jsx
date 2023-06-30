@@ -25,7 +25,7 @@ export default function Header() {
   const router = useRouter();
   const { setAuthToken, authToken } = useContext(UserContext);
 
-  const handleLogoClick = e => {
+  const handleLogoClick = (e) => {
     e.preventDefault();
     router.push('/');
   };
@@ -38,16 +38,16 @@ export default function Header() {
         `/api/oauth/revoke?token=${authToken}`,
         {
           method: 'POST',
-        },
+        }
       );
       const data = await revokeResponse.json();
       setAuthToken([]);
     } catch (error) {
-      console.log('this was the token error:', error);
+      console.log('Token error: ', error);
     }
   };
 
-  const onMenuClick = async e => {
+  const onMenuClick = async (e) => {
     if (e.detail.id === 'signout') {
       await signout();
       setUserProfile({});

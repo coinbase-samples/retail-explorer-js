@@ -6,7 +6,7 @@ export default async function createAddress(req, res) {
   };
   const payload = JSON.stringify(body);
 
-  let path = `/v2/accounts/${id}/addresses`;
+  const path = `/v2/accounts/${id}/addresses`;
 
   if (req.method !== 'POST') {
     res.status(405).json({ error: 'Method not allowed' });

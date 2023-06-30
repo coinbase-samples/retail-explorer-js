@@ -2,7 +2,7 @@ import { makeCall } from '../retailClient';
 
 export default async function listAccounts(req, res) {
   const { token } = req.query;
-  let path = '/v2/accounts';
+  const path = '/v2/accounts';
 
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });

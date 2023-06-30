@@ -2,7 +2,7 @@ import { makeCall } from '../retailClient';
 
 export default async function ProductById(req, res) {
   const { token, id } = req.query;
-  let path = `/api/v3/brokerage/products/${id}`;
+  const path = `/api/v3/brokerage/products/${id}`;
 
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });

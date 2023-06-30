@@ -3,7 +3,7 @@ import { makeCall } from '../../retailClient';
 export default async function listOpenOrders(req, res) {
   const { token, product_id } = req.query;
 
-  let path = `/api/v3/brokerage/orders/historical/batch?order_status=OPEN&product_id=${product_id}-USD`;
+  const path = `/api/v3/brokerage/orders/historical/batch?order_status=OPEN&product_id=${product_id}-USD`;
 
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });

@@ -3,7 +3,7 @@ import { uuid } from 'uuidv4';
 
 export default async function sendCrypto(req, res) {
   const { token, to, amount, asset, twoFAcode } = req.query;
-  let path = `/v2/accounts/${asset}/transactions`;
+  const path = `/v2/accounts/${asset}/transactions`;
   let payload;
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
